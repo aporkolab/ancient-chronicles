@@ -1,0 +1,81 @@
+/* jukebox.component.css */
+
+.jukebox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  background: #333;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.track-list {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.track-list ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.track-list li {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #444;
+  margin-bottom: 5px;
+  border: 1px solid #555;
+  transition: background-color 0.3s;
+  text-align: left;
+}
+
+.track-list li:hover,
+.track-list li.active {
+  background-color: #555;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.controls button {
+  padding: 10px 20px;
+  border: none;
+  background: #ff5722;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.controls button:hover {
+  background: #e64a19;
+}
+
+.track-info {
+  margin-top: 20px;
+  border-top: 1px solid #555;
+  padding-top: 10px;
+  width: 100%;
+  text-align: left;
+}
+
+.progress-bar {
+  background: #555;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress {
+  background: #ff5722;
+  height: 100%;
+  transition: width 0.3s;
+}

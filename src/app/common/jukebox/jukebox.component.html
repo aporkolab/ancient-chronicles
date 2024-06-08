@@ -1,0 +1,26 @@
+<!-- jukebox.component.html -->
+
+<div class="jukebox">
+	<div class="track-list">
+		<h2>Track List</h2>
+		<ul>
+			<li *ngFor="let track of tracks" (click)="play(track.filename)"
+				[class.active]="currentTrack?.filename === track.filename">
+				{{ track.title }} - {{ track.duration }}
+			</li>
+		</ul>
+	</div>
+	<div class="controls">
+		<button (click)="stop()">Stop</button>
+		<button (click)="toggleLoop()">Toggle Loop</button>
+	</div>
+	<div class="track-info" *ngIf="currentTrack">
+		<h3>Now Playing:</h3>
+		<p><strong>Title:</strong> {{ currentTrack.title }}</p>
+		<p><strong>Author:</strong> {{ currentTrack.author }}</p>
+		<p><strong>Lyricist:</strong> {{ currentTrack.lyricist }}</p>
+		<div class="progress-bar">
+			<div class="progress" [style.width.%]="getProgress()"></div>
+		</div>
+	</div>
+</div>
