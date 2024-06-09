@@ -1,5 +1,5 @@
 	body {
-	  //  background: url('parchment-background.jpg') no-repeat center center fixed;
+	  background: url('/assets/parchment-background.jpg') no-repeat center center fixed;
 	  background-size: cover;
 	  font-family: 'MedievalSharp', serif;
 	  color: #2c2c2c;
@@ -140,7 +140,9 @@
 	.stats dl {
 	  display: grid;
 	  grid-template-columns: 1fr 2fr;
-	  gap: 10px;
+	  margin-top: 3%;
+	  margin-left: 28%;
+	  color: #000000cf;
 	}
 
 	.description p {
@@ -155,8 +157,8 @@
 
 	.ancient-scroll {
 	  position: relative;
-	  // background: url('scroll-background.png') no-repeat center center;
-	  background-size: cover;
+	  background: url('/assets/scroll-background.jpg') no-repeat center center;
+	  background-size: auto;
 	  padding: 20px;
 	  border: 2px solid #b8860b;
 	  border-radius: 10px;

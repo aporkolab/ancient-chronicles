@@ -12,7 +12,7 @@
 	<div class="candle-light"></div>
 	<div class="container">
 		<div class="title glowing-text">Bájvérnő</div>
-		<div class="title glowing-text">Regina Voluptatis, Ἀρά Μορφή</div>
+		<div class="title glowing-text">Regina Voluptatis, Ara Morphē</div>
 		<div class="image-placeholder">
 			<img src="assets/bajverno.png" alt="Bájvérnő képe">
 		</div>
@@ -146,23 +146,6 @@
 				beléjük, ami k6 Ép sebzést okoz.</p>
 		</div>
 	</div>
-
-	<script>
-		document.addEventListener('mousemove', function (e) {
-			var candleLight = document.querySelector('.candle-light');
-			var rect = document.body.getBoundingClientRect();
-			var x = e.clientX - rect.left;
-			var y = e.clientY - rect.top;
-			candleLight.style.left = x - candleLight.offsetWidth / 2 + 'px';
-			candleLight.style.top = y - candleLight.offsetHeight / 2 + 'px';
-		});
-
-		window.addEventListener('scroll', function () {
-			var candleLight = document.querySelector('.candle-light');
-			var scrollTop = window.scrollY;
-			candleLight.style.top = (event.pageY - scrollTop) + 'px';
-		});
-	</script>
 </body>
 
 </html>

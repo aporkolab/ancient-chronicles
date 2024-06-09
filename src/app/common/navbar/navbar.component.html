@@ -1,23 +1,59 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
 	<div class="container-fluid">
-		<a class="navbar-brand" routerLink="/">Magus RPG</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<a class="navbar-brand" (click)="navigateTo('/')" [ngClass]="{ 'active': currentUrl === '/' }">Magus RPG</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" routerLink="/monsters">Monsters</a>
+					<a class="nav-link" (click)="navigateTo('/characters')" [ngClass]="{ 'active': currentUrl === '/characters' }"
+						aria-current="page">Characters</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" routerLink="/adventures">Adventures</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="monstersDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false">
+						Monsters
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="monstersDropdown">
+						<li><a class="dropdown-item" (click)="navigateTo('/monsters/arnyhalal')"
+								[ngClass]="{ 'active': currentUrl === '/monsters/arnyhalal' }">Árnyhalál</a></li>
+						<li><a class="dropdown-item" (click)="navigateTo('/monsters/bajverno')"
+								[ngClass]="{ 'active': currentUrl === '/monsters/bajverno' }">Bajverno</a></li>
+						<li><a class="dropdown-item" (click)="navigateTo('/monsters/lelekroppanto')"
+								[ngClass]="{ 'active': currentUrl === '/monsters/lelekroppanto' }">Lélekröppantó</a></li>
+					</ul>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" routerLink="/characters">Characters</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="adventuresDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false">
+						Adventures
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="adventuresDropdown">
+						<li><a class="dropdown-item" (click)="navigateTo('/adventures/melysivatag')"
+								[ngClass]="{ 'active': currentUrl === '/adventures/melysivatag' }">Mélysivatag</a></li>
+					</ul>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" routerLink="/classes">Classes</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="classesDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false">
+						Classes
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="classesDropdown">
+						<li><a class="dropdown-item" (click)="navigateTo('/classes/warrior')"
+								[ngClass]="{ 'active': currentUrl === '/classes/warrior' }">Warrior</a></li>
+						<li class="dropdown">
+							<a class="dropdown-item dropdown-toggle" href="#" id="priestsDropdown" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">Priests</a>
+							<ul class="dropdown-menu" aria-labelledby="priestsDropdown">
+								<li><a class="dropdown-item" (click)="navigateTo('/classes/priests/ellana-fopapno')"
+										[ngClass]="{ 'active': currentUrl === '/classes/priests/ellana-fopapno' }">Ellana Főpapnő</a></li>
+								<li><a class="dropdown-item" (click)="navigateTo('/classes/priests/ellana-pusztito')"
+										[ngClass]="{ 'active': currentUrl === '/classes/priests/ellana-pusztito' }">Ellana Pusztító</a></li>
+							</ul>
+						</li>
+					</ul>
 				</li>
 			</ul>
 		</div>
