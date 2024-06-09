@@ -1,26 +1,62 @@
-<!-- jukebox.component.html -->
-
-<div class="jukebox">
-	<div class="track-list">
-		<h2>Track List</h2>
-		<ul>
-			<li *ngFor="let track of tracks" (click)="play(track.filename)"
-				[class.active]="currentTrack?.filename === track.filename">
-				{{ track.title }} - {{ track.duration }}
-			</li>
-		</ul>
+<div class="jukebox" [class.minimized]="isMinimized">
+	<div class="header">
+		<button (click)="toggleMinimize()" [class.active]="isMinimized">
+			{{ isMinimized ? 'Maximize' : 'Minimize' }}
+		</button>
 	</div>
-	<div class="controls">
-		<button (click)="stop()">Stop</button>
-		<button (click)="toggleLoop()">Toggle Loop</button>
+	<div *ngIf="!isMinimized" class="content">
+		<div class="track-list">
+			<h2>Track List</h2>
+			<ul>
+				<li *ngFor="let track of tracks" (click)="play(track.filename)"
+					[class.active]="currentTrack?.filename === track.filename">
+					{{ track.title }} - {{ track.duration }}
+				</li>
+			</ul>
+		</div>
+		<div class="controls">
+			<button (click)="stop()">Stop</button>
+			<button (click)="pause()">Pause</button>
+			<button (click)="playCurrent()">Play</button>
+			<button (click)="toggleLoop()" [class.active]="isLooping">Toggle Loop</button>
+			<button (click)="toggleShuffle()" [class.active]="isShuffling">Toggle Shuffle</button>
+			<button (click)="toggleVisualizer()" [class.active]="showVisualizer">Toggle Visualizer</button>
+			<button (click)="toggleEqualizer()" [class.active]="showEqualizer">Toggle Equalizer</button>
+			<label for="volume">Volume</label>
+			<input id="volume" type="range" min="0" max="100" (input)="setVolume($event)">
+		</div>
+		<div class="track-info" *ngIf="currentTrack">
+			<h3>Now Playing:</h3>
+			<p><strong>Title:</strong> {{ currentTrack.title }}</p>
+			<p><strong>Author:</strong> {{ currentTrack.author }}</p>
+			<p><strong>Lyricist:</strong> {{ currentTrack.lyricist }}</p>
+			<div class="progress-bar" (click)="seek($event)">
+				<div class="progress" [style.width.%]="getProgress()"></div>
+			</div>
+		</div>
+		<div class="visualizer" *ngIf="showVisualizer">
+			<canvas #visualizerCanvas></canvas>
+		</div>
+		<div class="equalizer-controls" *ngIf="showEqualizer">
+			<label>Bass Boost</label>
+			<input type="range" min="0" max="100" (input)="setBassBoost($event)" title="Bass Boost">
+			<label>Treble Boost</label>
+			<input type="range" min="0" max="100" (input)="setTrebleBoost($event)" title="Treble Boost">
+		</div>
 	</div>
-	<div class="track-info" *ngIf="currentTrack">
-		<h3>Now Playing:</h3>
-		<p><strong>Title:</strong> {{ currentTrack.title }}</p>
-		<p><strong>Author:</strong> {{ currentTrack.author }}</p>
-		<p><strong>Lyricist:</strong> {{ currentTrack.lyricist }}</p>
-		<div class="progress-bar">
-			<div class="progress" [style.width.%]="getProgress()"></div>
+	<div *ngIf="isMinimized" class="minimized-content">
+		<div class="minimized-visualizer">
+			<canvas #visualizerCanvas></canvas>
+		</div>
+		<div class="track-info">
+			<p><strong>Title:</strong> {{ currentTrack?.title }}</p>
+		</div>
+		<div class="controls">
+			<button (click)="stop()">Stop</button>
+			<button (click)="pause()">Pause</button>
+			<button (click)="playCurrent()">Play</button>
+			<label for="volume">Volume</label>
+			<input id="volume" type="range" min="0" max="100" (input)="setVolume($event)">
 		</div>
 	</div>
 </div>

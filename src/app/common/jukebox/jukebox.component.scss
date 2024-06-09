@@ -1,81 +1,219 @@
-/* jukebox.component.css */
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
 
 .jukebox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Arial', sans-serif;
-  background: #333;
-  color: #fff;
+  background: url('/assets/rpg-background.jpg') no-repeat center center;
+  background-size: cover;
   padding: 20px;
+  border: 2px solid #ccc;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-family: 'Uncial Antiqua', cursive;
+  transition: all 0.3s ease;
 
-.track-list {
-  margin-bottom: 20px;
-  width: 100%;
-}
+  &.minimized {
+    height: 100px;
+    padding: 10px;
+    overflow: hidden;
 
-.track-list ul {
-  list-style-type: none;
-  padding: 0;
-  width: 100%;
-}
+    .content {
+      display: none;
+    }
 
-.track-list li {
-  cursor: pointer;
-  padding: 10px;
-  background-color: #444;
-  margin-bottom: 5px;
-  border: 1px solid #555;
-  transition: background-color 0.3s;
-  text-align: left;
-}
+    .minimized-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-.track-list li:hover,
-.track-list li.active {
-  background-color: #555;
-}
+      .minimized-visualizer {
+        width: 150px;
+        height: 50px;
 
-.controls {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
+        canvas {
+          width: 100%;
+          height: 100%;
+        }
+      }
 
-.controls button {
-  padding: 10px 20px;
-  border: none;
-  background: #ff5722;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
+      .track-info {
+        flex-grow: 1;
+        padding: 0 10px;
+        text-align: center;
 
-.controls button:hover {
-  background: #e64a19;
-}
+        p {
+          margin: 0;
+        }
+      }
 
-.track-info {
-  margin-top: 20px;
-  border-top: 1px solid #555;
-  padding-top: 10px;
-  width: 100%;
-  text-align: left;
-}
+      .controls {
+        display: flex;
+        align-items: center;
 
-.progress-bar {
-  background: #555;
-  height: 10px;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-top: 10px;
-}
+        button {
+          padding: 5px;
+          background: rgba(0, 0, 0, 0.7);
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          color: #fff;
+          cursor: pointer;
+          font-family: 'Uncial Antiqua', cursive;
 
-.progress {
-  background: #ff5722;
-  height: 100%;
-  transition: width 0.3s;
+          &:hover {
+            background: rgba(255, 255, 255, 0.1);
+          }
+
+          &.active {
+            background: rgba(255, 255, 255, 0.2);
+          }
+        }
+
+        label {
+          margin-right: 10px;
+        }
+
+        input[type="range"] {
+          width: 100px;
+        }
+      }
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      font-family: 'Uncial Antiqua', cursive;
+      padding: 5px 10px;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      &.active {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+
+  .content {
+    .track-list {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 5px;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+
+      h2 {
+        text-align: center;
+        margin-bottom: 10px;
+        font-family: 'Uncial Antiqua', cursive;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          padding: 5px;
+          cursor: pointer;
+
+          &.active {
+            background: rgba(255, 255, 255, 0.2);
+          }
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.1);
+          }
+        }
+      }
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+
+      button {
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        font-family: 'Uncial Antiqua', cursive;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        &.active {
+          background: rgba(255, 255, 255, 0.2);
+        }
+      }
+
+      label {
+        margin-right: 10px;
+      }
+
+      input[type="range"] {
+        width: 100px;
+      }
+    }
+
+    .track-info {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+
+      h3 {
+        text-align: center;
+        font-family: 'Uncial Antiqua', cursive;
+      }
+
+      .progress-bar {
+        background: #444;
+        border-radius: 5px;
+        overflow: hidden;
+        cursor: pointer;
+
+        .progress {
+          height: 10px;
+          background: #4caf50;
+        }
+      }
+    }
+
+    .visualizer {
+      margin-bottom: 20px;
+
+      canvas {
+        width: 100%;
+        height: 100px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 5px;
+      }
+    }
+
+    .equalizer-controls {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+
+      label {
+        margin-right: 10px;
+      }
+
+      input[type="range"] {
+        width: 100px;
+      }
+    }
+  }
 }
