@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+  color: #333;
+}
+
+.character-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.attributes,
+.skills,
+.special-abilities {
+  margin: 20px 0;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+}

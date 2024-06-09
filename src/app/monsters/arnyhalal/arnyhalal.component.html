@@ -1,1 +1,150 @@
-<p>arnyhalal works!</p>
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Árnyhalál - RPG Szörny</title>
+	<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="candle-light"></div>
+	<div class="container">
+		<div class="title glowing-text">Árnyhalál (Umbra Ferox vagy Skiodaimon)</div>
+		<div class="image-placeholder">
+			<img src="assets/arnyhalal.png" alt="Árnyhalál képe">
+			<audio class="audio-control" id="monster-sound" src="./monster-growl.mp3"></audio>
+		</div>
+		<div class="stats">
+			<h2 class="glowing-text">Szörny Statisztikák</h2>
+			<div class="ancient-scroll">
+				<dl>
+					<dt>Előfordulás:</dt>
+					<dd>Rendkívül ritka (Elátkozott Vidék)</dd>
+					<dt>Megjelenők száma:</dt>
+					<dd>1</dd>
+					<dt>Termet:</dt>
+					<dd>K-E(?)</dd>
+					<dt>Sebesség:</dt>
+					<dd>200 (L), 99 (SZ)</dd>
+					<dt>Támadó Érték:</dt>
+					<dd>60</dd>
+					<dt>Védő Érték:</dt>
+					<dd>70</dd>
+					<dt>Kezdeményező Érték:</dt>
+					<dd>30</dd>
+					<dt>Célzó Érték:</dt>
+					<dd>-</dd>
+					<dt>Sebzés:</dt>
+					<dd>Speciális vagy 1k10</dd>
+					<dt>Támadás/kör:</dt>
+					<dd>1</dd>
+					<dt>Életerő pontok:</dt>
+					<dd>30</dd>
+					<dt>Fájdalomtűrés pontok:</dt>
+					<dd>-</dd>
+					<dt>Asztrál ME:</dt>
+					<dd>Immunis</dd>
+					<dt>Mentál ME:</dt>
+					<dd>Immunis</dd>
+					<dt>Méregellenállás:</dt>
+					<dd>Immunis</dd>
+					<dt>Pszi:</dt>
+					<dd>Speciális metódus</dd>
+					<dt>Intelligencia:</dt>
+					<dd>Alacsony</dd>
+					<dt>Max. Mp.:</dt>
+					<dd>-</dd>
+					<dt>Jellem:</dt>
+					<dd>Változó, de főleg Halál-Káosz, illetve Káosz-Halál</dd>
+					<dt>Max. Tp.:</dt>
+					<dd>500</dd>
+					<dt>Necrografiai osztály:</dt>
+					<dd>Speciális</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="description character-sheet">
+			<h2 class="glowing-text">Leírás</h2>
+			<p><span class="initial">A</span>z Árnyékdémon eredete és megjelenése<br>
+				Az Árnyékdémon az Elátkozott Vidék legmélyebb sötétségéből származik, ahol a halál és káosz egybekel.
+				Valaha ember volt, de lelke a bosszú és gyűlölet tüzében eltorzult, és végül a Démoni Síkok egyikére
+				vetődött. Ott, a külső világok anyagából épített magának egy testet, amely szürke, sűrű ködből áll. Az
+				egykor emberi arcvonásai fátyolosan tükröződnek a torz testén.</p>
+
+			<p><span class="initial">A</span>z Árnyékdémon életútja és szolgálatai<br>
+				A gyászszertartás után három nappal az Árnyékdémon felkel sírjából, és egy Démonúr segítségével felépíti
+				új, légies testét. A Démonúr cserébe életerőt vagy egy szűz lányt követel rituáléihoz. A test gyorsan,
+				szinte villámgyorsan fejlődik, és amikor eléri teljes formáját, a démoni lélek belé költözik. A Démonúr
+				rituális áldással bocsátja az Elsődleges Anyagi Síkra, Ynevre, rendkívüli tulajdonságokkal felruházva,
+				mint a 100%-os Rejtőzködés és Megidézhetetlenség.</p>
+
+			<p><span class="initial">K</span>épességek és támadások<br>
+				Az Árnyékdémon pszichikus kínzásokkal támad, melyek az áldozatok elméjében idézik fel a démon kegyetlen
+				múltját. Melankolikus, bánatos zene kíséri támadásait, mely sírásra készteti az áldozatokat. Az árnyékuk
+				elrablásával öregedni kezdenek, és k6+1 napon belül meghalnak. Az árnyék elvesztése halálos
+				következményekkel jár, és a lélek csonkán bolyong a végtelen kínok között.</p>
+
+			<p><span class="initial">A</span>z Árnyékdémon legendája<br>
+				Az Árnyékdémon létezését már az előző évezredekben is ismerték és rettegték. Egy ősi zsoltár is említi:
+				„Oh, istenem! Csak az árnyékomat hagyd meg nekem, / hisz’ az árnyékom a mindenem!” Egy renegát
+				nekromanta szavai szerint: „Az árnyék rejti magában a halál tükörképét… ha a tükörkép eltűnik, a hiú
+				halál elviszi a tükörtartót a poklok poklába…”</p>
+
+			<p><span class="initial">G</span>yenge pontok és sebezhetőség<br>
+				Az Árnyékdémonok csak mágikus fegyverekkel, mint a Mirthill, Abbit vagy Elevenfém, sebezhetők. Csak azok
+				képesek rá, akik egy körben legalább kétszer támadhatnak. Ha az árnyékszerzés sikertelen, a démon
+				elmenekül, és egy nap legfeljebb háromszor próbálkozik. A Statikus pszi pajzsok részleges védelmet
+				nyújtanak, de korlátozottan.</p>
+
+			<p>Az Árnyékdémon anyagtalan kezei k10 Sp-t vonnak el áldozataiból. Az életerő szívása során az áldozat
+				Asztrálpróbát tesz, és ha sikertelen, életpontjainak egynegyedét elveszti. Az Árnyékdémon nem szeret
+				halálig küzdeni, és az első sikeres támadás után elmenekül, de rendkívül veszedelmes ellenfél a
+				magányosan kóborló kalandozóknak.</p>
+
+			<h2 class="glowing-text">Figyelmeztetés a játékosoknak</h2>
+			<p><span class="initial">A</span>z Árnyékdémonok ravaszak és kegyetlenek. Csak mágikus fegyverekkel és
+				megfelelő stratégiával lehet legyőzni őket. Az idézésük és a velük való bármilyen interakció rendkívül
+				veszélyes, és komoly áldozatokat követelhet a kalandozóktól. Emlékezz: Ha álmodban kínpadot látsz egy
+				pribékkel és egy boszorkánnyal, ne lepődj meg, ha az Árnyékdémon érkezik hozzád...</p>
+
+			<h2 class="glowing-text">Támadásának részletei</h2>
+			<p>Amikor az Árnyékdémon támadni készül, először az áldozat elméjébe vetíti saját kínzásainak emlékeit,
+				bánatos muzsika kíséretében, amely mindenkit sírásra késztet, akinek akarata 18 alatt van. A
+				képzeletbeli látomások lehetnek egy kráni hóhér, egy vén boszorkánymester kínzásai, vagy bármi más
+				kegyetlenség, amelyet a kalandmester részletez.</p>
+
+			<p>A démon megjelenésekor ellopja az áldozat árnyékát. Sikeres Mágia ellenállás esetén az áldozat csak
+				iszonyú fájdalmat érez, és k6 Fp-t veszít. Ha a próba sikertelen, az áldozat elveszti árnyékát, és
+				öregedni kezd, halálát k6+1 napon belül elérve.</p>
+
+			<p>Az Árnyékdémonok létezése az emberiség történelme során mindig is félelmet és rettegést keltett. Az
+				Elátkozott Vidék sötét meséi és a renegát nekromanták legendái örök mementóként emlékeztetnek az
+				árnyékok hatalmára és veszélyeire.</p>
+		</div>
+	</div>
+
+	<script>
+		document.addEventListener('mousemove', function (e) {
+			var candleLight = document.querySelector('.candle-light');
+			var rect = document.body.getBoundingClientRect();
+			var x = e.clientX - rect.left;
+			var y = e.clientY - rect.top;
+			candleLight.style.left = x - candleLight.offsetWidth / 2 + 'px';
+			candleLight.style.top = y - candleLight.offsetHeight / 2 + 'px';
+		});
+
+		window.addEventListener('scroll', function () {
+			var candleLight = document.querySelector('.candle-light');
+			var scrollTop = window.scrollY;
+			candleLight.style.top = (event.pageY - scrollTop) + 'px';
+		});
+
+		document.querySelector('.image-placeholder').addEventListener('mouseover', function () {
+			document.getElementById('monster-sound').play();
+		});
+	</script>
+</body>
+
+</html>

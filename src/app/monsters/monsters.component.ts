@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-monsters',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './monsters.component.html',
   styleUrl: './monsters.component.scss'
 })

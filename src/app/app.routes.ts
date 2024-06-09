@@ -17,28 +17,28 @@ import { EllanapusztitoComponent } from './classes/priests/ellanapusztito/ellana
 
 export const routes: Routes = [
 	{ path: '', redirectTo: '/monsters', pathMatch: 'full' },
-	{ path: 'navbar', component: NavbarComponent },
-	{ path: 'jukebox', component: JukeboxComponent },
+	{ path: 'navbar', loadComponent: () => import('./common/navbar/navbar.component').then(m => m.NavbarComponent) },
+	{ path: 'jukebox', loadComponent: () => import('./common/jukebox/jukebox.component').then(m => m.JukeboxComponent) },
 	{
-		path: 'monsters', component: MonstersComponent, children: [
-			{ path: 'arnyhalal', component: ArnyhalalComponent },
-			{ path: 'bajverno', component: BajvernoComponent },
-			{ path: 'lelekroppanto', component: LelekroppantoComponent },
+		path: 'monsters', loadComponent: () => import('./monsters/monsters.component').then(m => m.MonstersComponent), children: [
+			{ path: 'arnyhalal', loadComponent: () => import('./monsters/arnyhalal/arnyhalal.component').then(m => m.ArnyhalalComponent) },
+			{ path: 'bajverno', loadComponent: () => import('./monsters/bajverno/bajverno.component').then(m => m.BajvernoComponent) },
+			{ path: 'lelekroppanto', loadComponent: () => import('./monsters/lelekroppanto/lelekroppanto.component').then(m => m.LelekroppantoComponent) },
 		]
 	},
 	{
-		path: 'adventures', component: AdventuresComponent, children: [
-			{ path: 'melysivatag', component: MelysivatagComponent },
+		path: 'adventures', loadComponent: () => import('./adventures/adventures.component').then(m => m.AdventuresComponent), children: [
+			{ path: 'melysivatag', loadComponent: () => import('./adventures/melysivatag/melysivatag.component').then(m => m.MelysivatagComponent) },
 		]
 	},
-	{ path: 'characters', component: CharactersComponent },
+	{ path: 'characters', loadComponent: () => import('./characters/characters.component').then(m => m.CharactersComponent) },
 	{
-		path: 'classes', component: ClassesComponent, children: [
-			{ path: 'warrior', component: WarriorComponent },
+		path: 'classes', loadComponent: () => import('./classes/classes.component').then(m => m.ClassesComponent), children: [
+			{ path: 'warrior', loadComponent: () => import('./classes/warrior/warrior.component').then(m => m.WarriorComponent) },
 			{
-				path: 'priests', component: PriestsComponent, children: [
-					{ path: 'ellana-fopapno', component: EllanafopapnoComponent },
-					{ path: 'ellana-pusztito', component: EllanapusztitoComponent },
+				path: 'priests', loadComponent: () => import('./classes/priests/priests.component').then(m => m.PriestsComponent), children: [
+					{ path: 'ellana-fopapno', loadComponent: () => import('./classes/priests/ellanafopapno/ellanafopapno.component').then(m => m.EllanafopapnoComponent) },
+					{ path: 'ellana-pusztito', loadComponent: () => import('./classes/priests/ellanapusztito/ellanapusztito.component').then(m => m.EllanapusztitoComponent) },
 				]
 			},
 		]
