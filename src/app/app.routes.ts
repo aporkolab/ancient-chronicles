@@ -16,7 +16,7 @@ import { EllanafopapnoComponent } from './classes/priests/ellanafopapno/ellanafo
 import { EllanapusztitoComponent } from './classes/priests/ellanapusztito/ellanapusztito.component';
 
 export const routes: Routes = [
-	{ path: '', redirectTo: '/monsters', pathMatch: 'full' },
+	{ path: '', loadComponent: () => import('./home/home.component').then(m => m.HomeComponent) },
 	{ path: 'navbar', loadComponent: () => import('./common/navbar/navbar.component').then(m => m.NavbarComponent) },
 	{ path: 'jukebox', loadComponent: () => import('./common/jukebox/jukebox.component').then(m => m.JukeboxComponent) },
 	{
