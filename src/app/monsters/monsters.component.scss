@@ -1,0 +1,97 @@
+body {
+  background: url('/assets/parchment-background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'MedievalSharp', serif;
+  color: #2c2c2c;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.candle-light {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255, 184, 108, 0.9), rgba(0, 0, 0, 0.85));
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: flicker 2s infinite alternate;
+  z-index: 100;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.9;
+    transform: translateY(-5px);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0.9;
+    transform: translateY(5px);
+  }
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid #2c2c2c;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1;
+  animation: fadeInContainer 1.5s;
+}
+
+@keyframes fadeInContainer {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px #000;
+  color: #8b0000;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000;
+  }
+
+  100% {
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000;
+  }
+}
+
+.description p {
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.image-center {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.glowing-text {
+  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000, 0 0 30px #ff0000, 0 0 35px #ff0000;
+  animation: glow 2s infinite alternate;
+}
