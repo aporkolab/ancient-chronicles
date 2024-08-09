@@ -221,6 +221,34 @@ export class JukeboxComponent implements AfterViewInit {
     this.audio.currentTime = seekTime;
   }
 
+  playPrevious() {
+    if (this.currentTrack) {
+      let currentIndex = this.tracks.indexOf(this.currentTrack);
+      if (currentIndex === 0) {
+        currentIndex = this.tracks.length - 1; // Az utolsó számra ugrik, ha az elsőnél van
+      } else {
+        currentIndex -= 1;
+      }
+      this.play(this.tracks[currentIndex].filename);
+    } else {
+      this.play(this.tracks[this.tracks.length - 1].filename); // Az utolsó számot játssza, ha nincs aktuális szám
+    }
+  }
+
+  playNext() {
+    if (this.currentTrack) {
+      let currentIndex = this.tracks.indexOf(this.currentTrack);
+      if (currentIndex === this.tracks.length - 1) {
+        currentIndex = 0; // Az első számra ugrik, ha az utolsónál van
+      } else {
+        currentIndex += 1;
+      }
+      this.play(this.tracks[currentIndex].filename);
+    } else {
+      this.play(this.tracks[0].filename); // Az első számot játssza, ha nincs aktuális szám
+    }
+  }
+
   playNextTrack() {
     if (this.isShuffling) {
       this.playRandomTrack();

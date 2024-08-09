@@ -13,20 +13,17 @@ import { filter } from 'rxjs/operators';
 export class NavbarComponent implements OnInit {
   currentUrl: string = '';
 
-  constructor(private router: Router) {
-    // Listen to router events and filter for NavigationEnd events
-    this.router.events.pipe(
-      filter((event: RouterEvent): event is NavigationEnd => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      this.currentUrl = event.urlAfterRedirects; // Accessing urlAfterRedirects after ensuring the event is of type NavigationEnd
-    });
-  }
+  constructor(private router: Router) { }
 
-  navigateTo(route: string) {
-    this.router.navigate([route]);
+  navigateTo(url: string) {
+    this.router.navigateByUrl(url);
   }
 
   ngOnInit() {
-    this.currentUrl = this.router.url; // Set initial URL when component initializes
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentUrl = event.urlAfterRedirects;
+      }
+    });
   }
 }

@@ -1,5 +1,5 @@
 body {
-  // background: url('parchment-background.jpg') no-repeat center center fixed;
+  background: url('/assets/parchment-background.jpg') no-repeat center center fixed;
   background-size: cover;
   font-family: 'MedievalSharp', serif;
   color: #2c2c2c;
@@ -7,18 +7,6 @@ body {
   position: relative;
   overflow-x: hidden;
   min-height: 100vh;
-}
-
-.candle-light {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle, rgba(255, 184, 108, 0.9), rgba(0, 0, 0, 0.85));
-  border-radius: 50%;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  animation: flicker 2s infinite alternate;
-  z-index: 100;
 }
 
 @keyframes flicker {
@@ -109,7 +97,7 @@ body {
 
 .image-placeholder {
   width: 100%;
-  height: 400px;
+  height: 100%;
   background: #e0e0e0;
   border: 2px dashed #2c2c2c;
   display: flex;

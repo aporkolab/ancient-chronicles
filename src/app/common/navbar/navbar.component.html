@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<div class="container-fluid">
-		<a class="navbar-brand" (click)="navigateTo('/')" [ngClass]="{ 'active': currentUrl === '/' }">Ancient Chronicles:
-			Archive of M.A.G.U.S. Monsters, Classes, and Adventures</a>
+		<a class="navbar-brand" (click)="navigateTo('/')" [ngClass]="{ 'active': currentUrl === '/' }">Ancient
+			Chronicles</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
 			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item">
 					<a class="nav-link" (click)="navigateTo('/characters')" [ngClass]="{ 'active': currentUrl === '/characters' }"
 						aria-current="page">Characters</a>
@@ -44,7 +44,7 @@
 					<ul class="dropdown-menu" aria-labelledby="classesDropdown">
 						<li><a class="dropdown-item" (click)="navigateTo('/classes/warrior')"
 								[ngClass]="{ 'active': currentUrl === '/classes/warrior' }">Warrior</a></li>
-						<li class="dropdown">
+						<li class="dropdown-submenu">
 							<a class="dropdown-item dropdown-toggle" href="#" id="priestsDropdown" role="button"
 								data-bs-toggle="dropdown" aria-expanded="false">Priests</a>
 							<ul class="dropdown-menu" aria-labelledby="priestsDropdown">
@@ -56,7 +56,12 @@
 						</li>
 					</ul>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" (click)="navigateTo('/contact')" [ngClass]="{ 'active': currentUrl === '/contact' }"
+						aria-current="page">Kapcsolatfelvétel</a>
+				</li>
 			</ul>
+
 		</div>
 	</div>
 </nav>

@@ -1,9 +1,36 @@
 .navbar-brand {
-  font-family: 'Fantasy', cursive;
-  font-size: 1.5rem;
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
-.nav-link {
-  font-family: 'MedievalSharp', cursive;
-  font-size: 1.2rem;
+.navbar-nav .nav-link {
+  color: #ddd;
+
+  &.active {
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.dropdown-menu {
+  background-color: #343a40;
+}
+
+.dropdown-item {
+  color: #ddd;
+
+  &:hover {
+    color: #fff;
+    background-color: #495057;
+  }
+
+  &.active {
+    color: #fff;
+    background-color: #495057;
+  }
 }
