@@ -191,3 +191,61 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #8b0000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  animation: tableFadeIn 1.5s ease-in-out;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 2px solid #8b0000;
+}
+
+th {
+  background-color: #8b0000;
+  color: #fff;
+  font-family: 'MedievalSharp', serif;
+  font-size: 1.2em;
+  text-shadow: 2px 2px #000;
+  border-top: 2px solid #8b0000;
+  border-bottom: 3px solid #b22222;
+}
+
+td {
+  font-family: 'MedievalSharp', serif;
+  color: #2c2c2c;
+  font-size: 1em;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:nth-child(even) {
+  background: rgba(139, 0, 0, 0.1);
+}
+
+tr:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+@keyframes tableFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
