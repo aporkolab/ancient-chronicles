@@ -9,18 +9,6 @@ body {
   min-height: 100vh;
 }
 
-.candle-light {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle, rgba(255, 184, 108, 0.9), rgba(0, 0, 0, 0.85));
-  border-radius: 50%;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  animation: flicker 2s infinite alternate;
-  z-index: 100;
-}
-
 @keyframes flicker {
   0% {
     opacity: 0.9;
@@ -140,7 +128,9 @@ body {
 .stats dl {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 10px;
+  margin-top: 3%;
+  margin-left: 28%;
+  color: #000000cf;
 }
 
 .description p {
@@ -254,4 +244,74 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.ancient-scroll {
+  position: relative;
+  background: url('/assets/scroll-background.jpg') no-repeat center center;
+  background-size: auto;
+  padding: 20px;
+  border: 2px solid #b8860b;
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+  animation: scrollEffect 3s infinite alternate;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #8b0000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  animation: tableFadeIn 1.5s ease-in-out;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 2px solid #8b0000;
+}
+
+th {
+  background-color: #8b0000;
+  color: #fff;
+  font-family: 'MedievalSharp', serif;
+  font-size: 1.2em;
+  text-shadow: 2px 2px #000;
+  border-top: 2px solid #8b0000;
+  border-bottom: 3px solid #b22222;
+}
+
+td {
+  font-family: 'MedievalSharp', serif;
+  color: #2c2c2c;
+  font-size: 1em;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:nth-child(even) {
+  background: rgba(139, 0, 0, 0.1);
+}
+
+tr:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+@keyframes tableFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

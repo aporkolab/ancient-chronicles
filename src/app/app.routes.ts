@@ -16,6 +16,13 @@ import { WarriorComponent } from './classes/warrior/warrior.component';
 import { PriestsComponent } from './classes/priests/priests.component';
 import { EllanafopapnoComponent } from './classes/priests/ellanafopapno/ellanafopapno.component';
 import { EllanapusztitoComponent } from './classes/priests/ellanapusztito/ellanapusztito.component';
+import { HilvarComponent } from './classes/warrior/hilvar/hilvar.component';
+import { GonisTueComponent } from './characters/gonis-tue/gonis-tue.component';
+import { EmphasisDelTomorrowComponent } from './characters/emphasis-del-tomorrow/emphasis-del-tomorrow.component';
+import { ErmorVonGeladenComponent } from './characters/ermor-von-geladen/ermor-von-geladen.component';
+import { DharrMenudoSyrusComponent } from './characters/dharr-menudo-syrus/dharr-menudo-syrus.component';
+import { IbeadraVeronikaTeaceaComponent } from './characters/ibeadra-veronika-teacea/ibeadra-veronika-teacea.component';
+import { SasszemuAhmShereComponent } from './characters/sasszemu-ahm-shere/sasszemu-ahm-shere.component';
 
 export const routes: Routes = [
 	{ path: '', redirectTo: '/monsters', pathMatch: 'full' },
@@ -50,6 +57,30 @@ export const routes: Routes = [
 		component: CharactersOverviewComponent // Characters főoldal
 	},
 	{
+		path: 'characters/gonis-tue',
+		component: GonisTueComponent // Gonis Tue oldal közvetlenül elérhető
+	},
+	{
+		path: 'characters/sasszemu-ahm-shere',
+		component: SasszemuAhmShereComponent // Gonis Tue oldal közvetlenül elérhető
+	},
+	{
+		path: 'characters/emphasis-del-tomorrow',
+		component: EmphasisDelTomorrowComponent // Emphasis Del Tomorrow oldal közvetlenül elérhető
+	},
+	{
+		path: 'characters/ermor-von-geladen',
+		component: ErmorVonGeladenComponent // Ermor Von Geladen oldal közvetlenül elérhető
+	},
+	{
+		path: 'characters/dharr-menudo-syrus',
+		component: DharrMenudoSyrusComponent // Dharr Menudo Syrus oldal közvetlenül elérhető
+	},
+	{
+		path: 'characters/ibeadra-veronika-teacea',
+		component: IbeadraVeronikaTeaceaComponent // Ibeadra Veronika Teacea oldal közvetlenül elérhető
+	},
+	{
 		path: 'classes',
 		component: ClassesOverviewComponent, // Classes főoldal
 	},
@@ -68,6 +99,10 @@ export const routes: Routes = [
 	{
 		path: 'classes/priests/ellana-pusztito',
 		component: EllanapusztitoComponent // Ellana Pusztító oldal közvetlenül elérhető
+	},
+	{
+		path: 'classes/warriors/hilvar',
+		component: HilvarComponent
 	},
 	{
 		path: 'contact',

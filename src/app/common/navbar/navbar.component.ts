@@ -12,6 +12,8 @@ import { filter } from 'rxjs/operators';
 })
 export class NavbarComponent implements OnInit {
   currentUrl: string = '';
+  isPriestsMenuOpen = false;
+  isWarriorsMenuOpen = false;
 
   constructor(private router: Router) { }
 
@@ -25,5 +27,13 @@ export class NavbarComponent implements OnInit {
         this.currentUrl = event.urlAfterRedirects;
       }
     });
+  }
+
+  togglePriestsMenu(isOpen: boolean) {
+    this.isPriestsMenuOpen = isOpen;
+  }
+
+  toggleWarriorsMenu(isOpen: boolean) {
+    this.isWarriorsMenuOpen = isOpen;
   }
 }

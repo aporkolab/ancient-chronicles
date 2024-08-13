@@ -5,12 +5,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Hilvar - Az Orvgyilkos Gépezet</title>
+	<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
 </head>
 
 <body>
 	<div class="container">
 		<h1>Hilvar – Az Orvgyilkos Gépezet</h1>
-		<img src="file-6Z1pRKWafc62HGqxgfaLXFPz" alt="Hilvar kép" class="character-image">
+		<div class="image-container">
+			<img src="assets/hilvar2.png" alt="Hilvar kép" class="character-image">
+		</div>
 
 		<h2>Leírás</h2>
 		<p>A Hilvarok valójában tökéletes orvgyilkosok, akiket a Kobrák társasága alkotott meg, mint két lábon járó
@@ -30,38 +33,98 @@
 			szövetségének köszönhetően.</p>
 
 		<h2>Képességek</h2>
-		<div class="attributes">
-			<h3>Fizikai és Mentális Tulajdonságok</h3>
-			<ul>
-				<li><strong>Erő:</strong> K6+14</li>
-				<li><strong>Szépség:</strong> 3K6+kf</li>
-				<li><strong>Állóképesség:</strong> K10+10</li>
-				<li><strong>Intelligencia:</strong> 3K6(2x)</li>
-				<li><strong>Gyorsaság:</strong> K10+8</li>
-				<li><strong>Akaraterő:</strong> K10+10</li>
-				<li><strong>Ügyesség:</strong> 2K6+6</li>
-				<li><strong>Asztrál:</strong> K10+8 (2x)</li>
-				<li><strong>Egészség:</strong> 3K6</li>
-			</ul>
-		</div>
+		<table class="attributes">
+			<thead>
+				<tr>
+					<th>Fizikai és Mentális Tulajdonságok</th>
+					<th>Érték</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Erő</td>
+					<td>K6+14</td>
+				</tr>
+				<tr>
+					<td>Szépség</td>
+					<td>3K6+kf</td>
+				</tr>
+				<tr>
+					<td>Állóképesség</td>
+					<td>K10+10</td>
+				</tr>
+				<tr>
+					<td>Intelligencia</td>
+					<td>3K6(2x)</td>
+				</tr>
+				<tr>
+					<td>Gyorsaság</td>
+					<td>K10+8</td>
+				</tr>
+				<tr>
+					<td>Akaraterő</td>
+					<td>K10+10</td>
+				</tr>
+				<tr>
+					<td>Ügyesség</td>
+					<td>2K6+6</td>
+				</tr>
+				<tr>
+					<td>Asztrál</td>
+					<td>K10+8 (2x)</td>
+				</tr>
+				<tr>
+					<td>Egészség</td>
+					<td>3K6</td>
+				</tr>
+			</tbody>
+		</table>
 
-		<div class="attributes">
-			<h3>Harcértékek</h3>
-			<ul>
-				<li><strong>KÉ:</strong> 8</li>
-				<li><strong>TÉ:</strong> 30</li>
-				<li><strong>VÉ:</strong> 75</li>
-				<li><strong>CÉ:</strong> nincs</li>
-			</ul>
-		</div>
+		<table class="attributes">
+			<thead>
+				<tr>
+					<th>Harcértékek</th>
+					<th>Érték</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>KÉ</td>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>TÉ</td>
+					<td>30</td>
+				</tr>
+				<tr>
+					<td>VÉ</td>
+					<td>75</td>
+				</tr>
+				<tr>
+					<td>CÉ</td>
+					<td>Nincs</td>
+				</tr>
+			</tbody>
+		</table>
 
-		<div class="attributes">
-			<h3>Életerő és Fájdalomtűrés</h3>
-			<ul>
-				<li><strong>Ép alap:</strong> 8 + Állóképesség 9 feletti része</li>
-				<li><strong>Fp alap:</strong> 10 + Akaraterő és Egészség 10 feletti része + szintenkénti K6+4 Fp</li>
-			</ul>
-		</div>
+		<table class="attributes">
+			<thead>
+				<tr>
+					<th>Életerő és Fájdalomtűrés</th>
+					<th>Érték</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Ép alap</td>
+					<td>8 + Állóképesség 9 feletti része</td>
+				</tr>
+				<tr>
+					<td>Fp alap</td>
+					<td>10 + Akaraterő és Egészség 10 feletti része + szintenkénti K6+4 Fp</td>
+				</tr>
+			</tbody>
+		</table>
 
 		<h2>Képzettségek</h2>
 		<div class="skills">
@@ -97,8 +160,8 @@
 
 		<h2>Különleges Képességek</h2>
 		<div class="special-abilities">
-			<p>A Hilvarok egyszer egy héten képesek vad tombolásban harcolni, amely növeli KÉ-jüket 7-tel, TÉ-jüket 10-zel és
-				VÉ-jüket 5-tel. Halálukkor, hasonlóan egy Tűzvarázslóhoz, sebzést okozhatnak az ellenfélen.</p>
+			<p>A Hilvarok egyszer egy héten képesek vad tombolásban harcolni, amely növeli KÉ-jüket 7-tel, TÉ-jüket 10-zel
+				és VÉ-jüket 5-tel. Halálukkor, hasonlóan egy Tűzvarázslóhoz, sebzést okozhatnak az ellenfélen.</p>
 			<ul>
 				<li><strong>Alap Erősítés:</strong> 1E</li>
 				<li><strong>Minden T.Sz:</strong> +2 E</li>
@@ -118,22 +181,71 @@
 		<p>K6 arany.</p>
 
 		<h2>Tapasztalati Szintek</h2>
-		<div class="attributes">
-			<ul>
-				<li><strong>0-400:</strong> 1. szint</li>
-				<li><strong>401-750:</strong> 2. szint</li>
-				<li><strong>751-1300:</strong> 3. szint</li>
-				<li><strong>1301-2600:</strong> 4. szint</li>
-				<li><strong>2601-4700:</strong> 5. szint</li>
-				<li><strong>4701-10000:</strong> 6. szint</li>
-				<li><strong>10001-19000:</strong> 7. szint</li>
-				<li><strong>19001-35000:</strong> 8. szint</li>
-				<li><strong>35001-78100:</strong> 9. szint</li>
-				<li><strong>78101-145000:</strong> 10. szint</li>
-				<li><strong>145001-235000:</strong> 11. szint</li>
-				<li><strong>235001-323000:</strong> 12. szint</li>
-				<li><strong>Minden további szinthez:</strong> +98000 Tp</li>
-			</ul>
+		<table class="attributes">
+			<thead>
+				<tr>
+					<th>Tapasztalat</th>
+					<th>Szint</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>0-400</td>
+					<td>1. szint</td>
+				</tr>
+				<tr>
+					<td>401-750</td>
+					<td>2. szint</td>
+				</tr>
+				<tr>
+					<td>751-1300</td>
+					<td>3. szint</td>
+				</tr>
+				<tr>
+					<td>1301-2600</td>
+					<td>4. szint</td>
+				</tr>
+				<tr>
+					<td>2601-4700</td>
+					<td>5. szint</td>
+				</tr>
+				<tr>
+					<td>4701-10000</td>
+					<td>6. szint</td>
+				</tr>
+				<tr>
+					<td>10001-19000</td>
+					<td>7. szint</td>
+				</tr>
+				<tr>
+					<td>19001-35000</td>
+					<td>8. szint</td>
+				</tr>
+				<tr>
+					<td>35001-78100</td>
+					<td>9. szint</td>
+				</tr>
+				<tr>
+					<td>78101-145000</td>
+					<td>10. szint</td>
+				</tr>
+				<tr>
+					<td>145001-235000</td>
+					<td>11. szint</td>
+				</tr>
+				<tr>
+					<td>235001-323000</td>
+					<td>12. szint</td>
+				</tr>
+				<tr>
+					<td>+98000 Tp</td>
+					<td>Minden további szinthez</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="image-container">
+			<img src="assets/hilvar.png" alt="Hilvar kép" class="character-image">
 		</div>
 
 		<h2>Hilvar Fegyvertára</h2>
@@ -141,31 +253,81 @@
 			<h3>Szkíta Dobókard</h3>
 			<p>Ez a fegyver hasonló a bumeránghoz, egy méter hosszú, mágikus energiákkal kovácsolt. Visszatér a gazdája
 				kezébe, ha eldobja.</p>
-			<ul>
-				<li><strong>Erő:</strong> Legalább 17</li>
-				<li><strong>Jellem:</strong> Rend-Halál vagy Halál-Rend</li>
-			</ul>
-			<h4>Értékei</h4>
-			<ul>
-				<li><strong>Közelharcban:</strong></li>
-				<li>Támadás körönként: 1</li>
-				<li>Sebzés: K6+3</li>
-				<li>TÉ/CÉ: 23</li>
-				<li>VÉ: 20</li>
-				<li>KÉ: 10</li>
-				<li>Súly: Általában 15 kg</li>
-				<li>Ár: Hilvar: 4 a, Más: 11 a</li>
-			</ul>
-			<ul>
-				<li><strong>Célbadobásban:</strong></li>
-				<li>Támadás körönként: 1</li>
-				<li>Sebzés: K6+1</li>
-				<li>TÉ/CÉ: 9</li>
-				<li>Táv: 35-40</li>
-				<li>KÉ: 5</li>
-				<li>Súly: Általában 15 kg</li>
-				<li>Ár: Hilvar: 4 a, Más: 11 a</li>
-			</ul>
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2">Értékek közelharcban</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Támadás körönként:</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>Sebzés:</td>
+						<td>K6+3</td>
+					</tr>
+					<tr>
+						<td>TÉ/CÉ:</td>
+						<td>23</td>
+					</tr>
+					<tr>
+						<td>VÉ:</td>
+						<td>20</td>
+					</tr>
+					<tr>
+						<td>KÉ:</td>
+						<td>10</td>
+					</tr>
+					<tr>
+						<td>Súly:</td>
+						<td>Általában 15 kg</td>
+					</tr>
+					<tr>
+						<td>Ár:</td>
+						<td>Hilvar: 4 a, Más: 11 a</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2">Célbadobásban</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Támadás körönként:</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>Sebzés:</td>
+						<td>K6+1</td>
+					</tr>
+					<tr>
+						<td>TÉ/CÉ:</td>
+						<td>9</td>
+					</tr>
+					<tr>
+						<td>Táv:</td>
+						<td>35-40</td>
+					</tr>
+					<tr>
+						<td>KÉ:</td>
+						<td>5</td>
+					</tr>
+					<tr>
+						<td>Súly:</td>
+						<td>Általában 15 kg</td>
+					</tr>
+					<tr>
+						<td>Ár:</td>
+						<td>Hilvar: 4 a, Más: 11 a</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 
 		<h2>Hilvarrá Válás</h2>
@@ -178,8 +340,8 @@
 					számára, amely tartalmazza, hogyan és miért keresi Detre Citríbet. Fontos, hogy a karakter motivációi
 					hitelesek és összhangban legyenek a Hilvarrá válás céljával.</li>
 				<li><strong>Erigowba Zarándoklat:</strong> A karakternek el kell zarándokolnia Erigowba, ahol meg kell találnia
-					Detre Citríbet. Ez a szakasz egy modul keretében játszódik, amely során a karakter különböző akadályokkal és
-					kihívásokkal szembesül.</li>
+					Detre Citríbet. Ez a szakasz egy modul keretében játszódik, amely során a karakter különböző akadályokkal
+					és kihívásokkal szembesül.</li>
 				<li><strong>Detre Citríb Kegyeinek Megnyerése:</strong> A karakternek meg kell győznie Detre Citríbet, hogy
 					elvégezze az átalakítást. Ez gyakran valamilyen próbatételt vagy küldetést jelent, amelyet a karakternek
 					teljesítenie kell.</li>
@@ -207,10 +369,6 @@
 			</ul>
 		</div>
 
-		<footer>
-			<p>By BlueAdam</p>
-			<p>Email: <a href="mailto:blueadam@freemail.hu">blueadam&#64;freemail.hu"</a></p>
-		</footer>
 	</div>
 
 </body>

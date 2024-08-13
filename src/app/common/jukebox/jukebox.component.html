@@ -1,7 +1,7 @@
 <div class="jukebox" [class.minimized]="isMinimized">
 	<div class="header">
-		<button (click)="toggleMinimize()" [class.active]="isMinimized">
-			{{ isMinimized ? 'Maximize' : 'Minimize' }}
+		<button (click)="toggleMinimize()" [class.active]="isMinimized" data-tooltip="Toggle Maximize/Minimize">
+			{{ isMinimized ? '⤢' : '⤡' }}
 		</button>
 	</div>
 	<div *ngIf="!isMinimized" class="content">
@@ -15,14 +15,16 @@
 			</ul>
 		</div>
 		<div class="controls">
-			<button (click)="stop()">Stop</button>
-			<button (click)="pause()">Pause</button>
-			<button (click)="playCurrent()">Play</button>
-			<button (click)="toggleLoop()" [class.active]="isLooping">Toggle Loop</button>
-			<button (click)="toggleShuffle()" [class.active]="isShuffling">Toggle Shuffle</button>
-			<button (click)="toggleVisualizer()" [class.active]="showVisualizer">Toggle Visualizer</button>
-			<button (click)="toggleEqualizer()" [class.active]="showEqualizer">Toggle Equalizer</button>
-			<label for="volume">Volume</label>
+			<button (click)="stop()" data-tooltip="Stop">⏹</button>
+			<button (click)="pause()" data-tooltip="Pause">⏸</button>
+			<button (click)="playCurrent()" data-tooltip="Play">⏵</button>
+			<button (click)="playPrevious()" data-tooltip="Previous">⏮</button>
+			<button (click)="playNext()" data-tooltip="Next">⏭</button>
+			<button (click)="toggleLoop()" [class.active]="isLooping" data-tooltip="Toggle Loop">🔁</button>
+			<button (click)="toggleShuffle()" [class.active]="isShuffling" data-tooltip="Toggle Shuffle">🔀</button>
+			<button (click)="toggleVisualizer()" [class.active]="showVisualizer" data-tooltip="Toggle Visualizer">🎵</button>
+			<button (click)="toggleEqualizer()" [class.active]="showEqualizer" data-tooltip="Toggle Equalizer">🎚</button>
+			<label for="volume">🔊</label>
 			<input id="volume" type="range" min="0" max="100" (input)="setVolume($event)">
 		</div>
 		<div class="track-info" *ngIf="currentTrack">
@@ -55,12 +57,12 @@
 			<div class="progress" [style.width.%]="getProgress()"></div>
 		</div>
 		<div class="controls">
-			<button (click)="playPrevious()">Previous</button>
-			<button (click)="stop()">Stop</button>
-			<button (click)="pause()">Pause</button>
-			<button (click)="playCurrent()">Play</button>
-			<button (click)="playNext()">Next</button>
-			<label for="volume">Volume</label>
+			<button (click)="playCurrent()" data-tooltip="Play">⏵</button>
+			<button (click)="pause()" data-tooltip="Pause">⏸</button>
+			<button (click)="stop()" data-tooltip="Stop">⏹</button>
+			<button (click)="playPrevious()" data-tooltip="Previous">⏮</button>
+			<button (click)="playNext()" data-tooltip="Next">⏭</button>
+			<label for="volume">🔊</label>
 			<input id="volume" type="range" min="0" max="100" (input)="setVolume($event)">
 		</div>
 	</div>

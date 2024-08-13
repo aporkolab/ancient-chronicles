@@ -10,70 +10,76 @@
   color: #fff;
   font-family: 'Uncial Antiqua', cursive;
   transition: all 0.3s ease;
+  position: relative;
+  /* Pozíció a pseudo-elemek helyes elrendezéséhez */
+  overflow: hidden;
+  /* Biztosítja, hogy a tartalom ne lógjon ki */
 
   &.minimized {
     height: 100px;
     padding: 10px;
     overflow: hidden;
 
-    .content {
-      display: none;
-    }
-
     .minimized-content {
       display: flex;
+      flex-direction: row;
+      /* Horizontális igazítás */
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-around;
+      /* Horizontálisan középre igazítás */
+      height: 100%;
+      /* Kitölti a rendelkezésre álló teret */
+      height: 50%;
+    }
 
-      .minimized-visualizer {
-        width: 150px;
-        height: 50px;
+    .minimized-visualizer {
+      width: 150px;
+      height: 50px;
+      margin-right: 10px;
+      /* Távolság a vizualizáló és a többi elem között */
+    }
 
-        canvas {
-          width: 100%;
-          height: 100%;
-        }
-      }
+    .track-info {
+      flex-grow: 1;
+      padding: 0;
+      text-align: center;
+      margin-right: 10px;
+      /* Távolság a szöveg és a progress bar között */
+    }
 
-      .track-info {
-        flex-grow: 1;
-        padding: 0 10px;
-        text-align: center;
+    .progress-bar {
+      width: 100%;
+      /* A progress bar kitölti a rendelkezésre álló szélességet */
+      height: 4px;
+      background-color: #e0e0e0;
+      border-radius: 2px;
+      margin-right: 10px;
+      /* Távolság a progress bar és a gombok között */
+    }
 
-        p {
-          margin: 0;
-        }
-      }
+    .progress {
+      height: 100%;
+      background-color: #76c7c0;
+      border-radius: 2px;
+      transition: width 0.1s ease-in-out;
+    }
 
-      .controls {
-        display: flex;
-        align-items: center;
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      /* Gombok jobb oldalra igazítása */
+      width: auto;
 
-        button {
-          padding: 5px;
-          background: rgba(0, 0, 0, 0.7);
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          color: #fff;
-          cursor: pointer;
-          font-family: 'Uncial Antiqua', cursive;
-
-          &:hover {
-            background: rgba(255, 255, 255, 0.1);
-          }
-
-          &.active {
-            background: rgba(255, 255, 255, 0.2);
-          }
-        }
-
-        label {
-          margin-right: 10px;
-        }
-
-        input[type="range"] {
-          width: 100px;
-        }
+      button {
+        padding: 5px;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        font-family: 'Uncial Antiqua', cursive;
+        margin-left: 10px;
+        /* Kis távolság a gombok között */
       }
     }
   }
@@ -237,10 +243,11 @@
 .minimized-content .progress-bar {
   width: 100%;
   height: 4px;
-  /* Csökkentett magasság a minimalizált nézethez */
+  /* Csökkentett szélesség és magasság a minimalizált nézethez */
   background-color: #e0e0e0;
   border-radius: 2px;
-  cursor: pointer;
+  margin-right: 10px;
+  /* Távolság a progress bar és a gombok között */
 }
 
 .minimized-content .progress {
@@ -248,4 +255,43 @@
   background-color: #76c7c0;
   border-radius: 2px;
   transition: width 0.1s ease-in-out;
+}
+
+.controls button {
+  font-size: 24px;
+  /* Nagyobb betűméret a gombikonokhoz */
+  padding: 15px;
+  /* Több hely a gombok körül */
+  margin: 5px;
+  /* Kisebb távolság a gombok között */
+  cursor: pointer;
+  position: relative;
+}
+
+.controls button:hover::after {
+  content: attr(data-tooltip);
+  /* A tooltip szöveg megjelenítése */
+  position: absolute;
+  bottom: 100%;
+  /* A gomb fölött jelenik meg */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 14px;
+  z-index: 10;
+}
+
+.controls button::after {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s;
+}
+
+.controls button:hover::after {
+  visibility: visible;
+  opacity: 1;
 }

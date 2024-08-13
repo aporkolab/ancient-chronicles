@@ -14,7 +14,7 @@ export class JukeboxComponent implements AfterViewInit {
   isShuffling: boolean = false;
   showVisualizer: boolean = false;
   showEqualizer: boolean = false;
-  isMinimized: boolean = false;
+  isMinimized: boolean = true;
   audioContextInitialized: boolean = false;
   tracks: Array<{ title: string, filename: string, author: string, lyricist: string, duration: string }> = [
     { title: 'Frostbound Journey', filename: 'Frostbound_Journey.mp3', author: '', lyricist: '', duration: '3:45' },
@@ -87,17 +87,6 @@ export class JukeboxComponent implements AfterViewInit {
     }
   }
 
-  play(filename: string) {
-    this.startAudioContext();
-    const filePath = `music/${filename}`; // Ensure correct file path
-    if (this.currentTrack && this.currentTrack.filename === filename && !this.audio.paused) {
-      this.audio.pause();
-    } else {
-      this.currentTrack = this.tracks.find(t => t.filename === filename);
-      this.audio.src = filePath;
-      this.audio.play();
-    }
-  }
 
   stop() {
     this.audio.pause();
@@ -126,19 +115,20 @@ export class JukeboxComponent implements AfterViewInit {
     this.isShuffling = !this.isShuffling;
   }
 
-  toggleVisualizer() {
-    this.showVisualizer = !this.showVisualizer;
-    if (this.showVisualizer && this.visualizerCanvas) {
-      this.startVisualizer();
-    }
-  }
-
   toggleEqualizer() {
     this.showEqualizer = !this.showEqualizer;
   }
 
-  toggleMinimize() {
-    this.isMinimized = !this.isMinimized;
+
+  stopVisualizer() {
+    if (this.visualizerCanvas) {
+      const canvas = this.visualizerCanvas.nativeElement;
+      const canvasContext = canvas.getContext('2d');
+      if (canvasContext) {
+        // Töröljük a canvas-t és állítsuk le a vizualizációt
+        canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
   }
 
   setVolume(event: Event) {
@@ -163,49 +153,21 @@ export class JukeboxComponent implements AfterViewInit {
     this.audio.volume = 0.8;
   }
 
-  startVisualizer() {
-    if (!this.visualizerCanvas) {
-      return;
-    }
-
-    const canvas = this.visualizerCanvas.nativeElement;
-    const canvasContext = canvas.getContext('2d');
-    if (!canvasContext) return;
-
-    this.analyser.fftSize = 256;
-    const bufferLength = this.analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
-
-    const draw = () => {
-      requestAnimationFrame(draw);
-      this.analyser.getByteFrequencyData(dataArray);
-
-      canvasContext.fillStyle = 'rgb(0, 0, 0)';
-      canvasContext.fillRect(0, 0, canvas.width, canvas.height);
-
-      const barWidth = (canvas.width / bufferLength) * 2.5;
-      let barHeight;
-      let x = 0;
-
-      for (let i = 0; i < bufferLength; i++) {
-        barHeight = dataArray[i];
-        canvasContext.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
-        canvasContext.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight / 2);
-        x += barWidth + 1;
-      }
-    };
-
-    draw();
-  }
-
   setBassBoost(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
-    this.bassFilter.gain.setValueAtTime(Number(value), this.audioContext.currentTime);
+    const value = Number((event.target as HTMLInputElement).value);
+    const gain = this.calculateGain(value, 40); // Max gain: 40 dB
+    this.bassFilter.gain.setValueAtTime(gain, this.audioContext.currentTime);
   }
 
   setTrebleBoost(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
-    this.trebleFilter.gain.setValueAtTime(Number(value), this.audioContext.currentTime);
+    const value = Number((event.target as HTMLInputElement).value);
+    const gain = this.calculateGain(value, 40); // Max gain: 40 dB
+    this.trebleFilter.gain.setValueAtTime(gain, this.audioContext.currentTime);
+  }
+
+  calculateGain(value: number, maxGain: number): number {
+    // Gain érték finomhangolása kisebb léptékkel, hogy ne legyen túl érzékeny
+    return (value - 50) * (maxGain / 100); // -20 dB-től +20 dB-ig terjedő tartomány
   }
 
   getProgress() {
@@ -271,5 +233,98 @@ export class JukeboxComponent implements AfterViewInit {
 
     this.playedTracks.add(randomIndex);
     this.play(this.tracks[randomIndex].filename);
+  }
+
+
+  toggleMinimize() {
+    this.isMinimized = !this.isMinimized;
+
+    if (!this.isMinimized && this.showVisualizer) {
+      this.restartVisualizer(); // Teljes újraindítás
+    }
+  }
+
+  restartVisualizer() {
+    if (!this.visualizerCanvas || !this.audio) {
+      return;
+    }
+
+    // Újraindítjuk az AudioContext-et és az AnalyserNode-ot
+    this.audioContext.close().then(() => {
+      this.audioContext = new AudioContext();
+      this.analyser = this.audioContext.createAnalyser();
+      this.source = this.audioContext.createMediaElementSource(this.audio);
+
+      // Csatlakoztatjuk a forrást és az AnalyserNode-ot
+      this.source.connect(this.analyser);
+      this.analyser.connect(this.audioContext.destination);
+
+      // Elindítjuk a vizualizátort
+      this.startVisualizer();
+    });
+  }
+
+  startVisualizer() {
+    if (!this.visualizerCanvas || !this.analyser) {
+      return;
+    }
+
+    const canvas = this.visualizerCanvas.nativeElement;
+    const canvasContext = canvas.getContext('2d');
+    if (!canvasContext) return;
+
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+
+    this.analyser.fftSize = 256;
+    const bufferLength = this.analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    const draw = () => {
+      if (!this.showVisualizer) return;
+      requestAnimationFrame(draw);
+
+      this.analyser.getByteFrequencyData(dataArray);
+
+      canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+
+      const barWidth = (canvas.width / bufferLength) * 2.5;
+      let barHeight;
+      let x = 0;
+
+      for (let i = 0; i < bufferLength; i++) {
+        barHeight = dataArray[i];
+        canvasContext.fillStyle = `rgb(${barHeight + 100}, 50, 50)`;
+        canvasContext.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight / 2);
+        x += barWidth + 1;
+      }
+    };
+
+    draw();
+  }
+
+  toggleVisualizer() {
+    this.showVisualizer = !this.showVisualizer;
+
+    if (this.showVisualizer && !this.isMinimized) {
+      this.restartVisualizer();  // Újraindítás a biztos működésért
+    }
+  }
+
+  play(filename: string) {
+    this.startAudioContext();
+    const filePath = `music/${filename}`;
+    if (this.currentTrack && this.currentTrack.filename === filename && !this.audio.paused) {
+      this.audio.pause();
+    } else {
+      this.currentTrack = this.tracks.find(t => t.filename === filename);
+      this.audio.src = filePath;
+
+      if (this.showVisualizer) {
+        this.restartVisualizer();  // Újraindítás a biztos működésért
+      }
+
+      this.audio.play();
+    }
   }
 }

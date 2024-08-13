@@ -5,15 +5,16 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Ellana-Pusztító RPG Karakter</title>
-
+	<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
 </head>
 
 <body>
 	<div class="container">
-		<h1>Ellana-Pusztító RPG Karakter</h1>
+		<h1>Ellana-Pusztító</h1>
 		<div class="image-container">
-			<img src="path_to_your_image.jpg" alt="Ellana-Pusztító">
+			<img src="/assets/ellanaPusztito.png" alt="Ellana-Pusztító">
 		</div>
+
 		<div class="description">
 			<p>Ellana, a kéj istennőjének harcos papnői, az Ellana-Pusztítók, egyedi és rettegett alakok Ynev világában. Még
 				saját rendjük és istenük, Ellana is megveti őket a szabályok megszegése és erkölcstelenségük miatt. Míg más
@@ -21,7 +22,7 @@
 				kasztba is sorolhatnánk őket, papmágiájuk miatt a pap kasztba tartoznak.</p>
 			<p>Pusztító csak Ellana-Főpapnőből lehet, ill. csak Pusztítótól lehet tanulni; és csak akkor, ha olyan sok
 				ártatlan embert ölt meg praktikáival, hogy Jellemtorzulást szenvedett. Jelleme Halálra vagy annak egyik
-				kombinációára változott.</p>
+				kombinációjára változott.</p>
 			<p>Nem kímélik az emberi életet. Mindenkit meg akarnak ölni, de főleg az ellenkező nemű társaikat. Teljesen
 				renegátok; ezért sok hasonlóságot lehet felfedezni bennük a Boszorkánymesterrel kapcsolatban. Első látásra
 				mindenki összetéveszti őket. Jó részük rasszista beállítottságú, utálják az elfeket, az udvari orkokat, és a
@@ -30,33 +31,123 @@
 				nyíltan kerülik a társaságukat. Nem telepedhetnek le, nem lehetnek gyermekeik, férjük… egyetlen esélyük öreg
 				korukra, hogy tanítványuk eltűri őket a nyakán.</p>
 		</div>
-		<div class="stats">
-			<h2>Tulajdonságok</h2>
-			<p>Erő: k10+10</p>
-			<p>Szépség: 2k6+6</p>
-			<p>Állóképesség: k6+12</p>
-			<p>Intelligencia: k10+10</p>
-			<p>Gyorsaság: 3k6(2X)</p>
-			<p>Akaraterő: k10+8</p>
-			<p>Ügyesség: k10+10</p>
-			<p>Asztrál: k10+10</p>
-			<p>Egészség: 3k6(2X)</p>
-		</div>
-		<div class="stats">
-			<h2>Harci értékek</h2>
-			<p>A Pusztítók, minden értéke nagyobb, mint a sima papoké. Így aztán KÉ értéke: 10, TÉ alapja 19, VÉ alapja: 75, a
-				CÉ alap: 7. HM/Szint: 10. Kötelesek minden tulajdonságukra legalább 1-1 pontot rakni.</p>
-		</div>
-		<div class="stats">
-			<h2>Életerő és fájdalomtűrés</h2>
-			<p>Az Ellanák nem igazán bírják a fájdalmat, (csak úgy, mint a papok) mert szervezetük igazán ellustult a több
-				órás ágyhasználattól. Ép alapjuk: 6, amihez még Egészségük 10 feletti része jön). Fp alapjuk: 7, amihez még az
-				Állóképesség és Akaraterő 10 feletti része. Fp/Szint: k6+1. De nem is ebben a legjobbak…</p>
-		</div>
-		<div class="stats">
-			<h2>Vagyon</h2>
-			<p>K6+3 arany.</p>
-		</div>
+
+		<table class="stats">
+			<thead>
+				<tr>
+					<th>Tulajdonság</th>
+					<th>Érték</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Erő</td>
+					<td>k10+10</td>
+				</tr>
+				<tr>
+					<td>Szépség</td>
+					<td>2k6+6</td>
+				</tr>
+				<tr>
+					<td>Állóképesség</td>
+					<td>k6+12</td>
+				</tr>
+				<tr>
+					<td>Intelligencia</td>
+					<td>k10+10</td>
+				</tr>
+				<tr>
+					<td>Gyorsaság</td>
+					<td>3k6(2X)</td>
+				</tr>
+				<tr>
+					<td>Akaraterő</td>
+					<td>k10+8</td>
+				</tr>
+				<tr>
+					<td>Ügyesség</td>
+					<td>k10+10</td>
+				</tr>
+				<tr>
+					<td>Asztrál</td>
+					<td>k10+10</td>
+				</tr>
+				<tr>
+					<td>Egészség</td>
+					<td>3k6(2X)</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="stats">
+			<thead>
+				<tr>
+					<th>Jellemző</th>
+					<th>Érték</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>KÉ értéke</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>TÉ alapja</td>
+					<td>19</td>
+				</tr>
+				<tr>
+					<td>VÉ alapja</td>
+					<td>75</td>
+				</tr>
+				<tr>
+					<td>CÉ alap</td>
+					<td>7</td>
+				</tr>
+				<tr>
+					<td>HM/Szint</td>
+					<td>10</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="stats">
+			<thead>
+				<tr>
+					<th>Életerő és fájdalomtűrés</th>
+					<th>Érték</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Ép alap</td>
+					<td>6 + Egészségük 10 feletti része</td>
+				</tr>
+				<tr>
+					<td>Fp alap</td>
+					<td>7 + Állóképesség és Akaraterő 10 feletti része</td>
+				</tr>
+				<tr>
+					<td>Fp/Szint</td>
+					<td>k6+1</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="stats">
+			<thead>
+				<tr>
+					<th>Vagyon</th>
+					<th>Érték</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Arany</td>
+					<td>K6+3 arany</td>
+				</tr>
+			</tbody>
+		</table>
+
 		<div class="skills">
 			<h2>Képzettségek</h2>
 			<p>Az Ellana Pusztító szervezete, és képességei azt a célt szolgálják, hogy minél jobb és látványosabb pusztítást
@@ -65,17 +156,20 @@
 				elveszíti, de Szintjét és Képességeit nem (már ha egyáltalán csak átalakult, tanítványnál természetesen nincs
 				ilyen) Képzettségei korántsem olyan nőiesek, mint az „igazi” Ellanáké. Az első szinten az alábbi képzettségekkel
 				rendelkezik:</p>
-			<p>1 fegyver használata (tetszés szerint): Mf</p>
-			<p>1 fegyver dobása (főleg hajítóbárd): Af</p>
-			<p>Ökölharc: Af</p>
-			<p>Pszi (Pyarroni módszer): Mf</p>
-			<p>Álcázás/Álruha: Af</p>
-			<p>Lefegyverzés: Mf</p>
-			<p>Írás/Olvasás: Af</p>
-			<p>Kétkezes harc: Mf</p>
-			<p>Szájjal Támadás/Védekezés: Mf</p>
-			<p>Titkosajtó Keresés: 30%</p>
+			<ul>
+				<li>1 fegyver használata (tetszés szerint): Mf</li>
+				<li>1 fegyver dobása (főleg hajítóbárd): Af</li>
+				<li>Ökölharc: Af</li>
+				<li>Pszi (Pyarroni módszer): Mf</li>
+				<li>Álcázás/Álruha: Af</li>
+				<li>Lefegyverzés: Mf</li>
+				<li>Írás/Olvasás: Af</li>
+				<li>Kétkezes harc: Mf</li>
+				<li>Szájjal Támadás/Védekezés: Mf</li>
+				<li>Titkosajtó Keresés: 30%</li>
+			</ul>
 		</div>
+
 		<div class="description">
 			<p>*: az Ellana-Puszítók kidolgozták azt a támadási és védekezési módszert, amikor a szájukkal (pontosabban a
 				fogaikkal) támadnak. Már több évtizedes múltja van a módszernek, de csak most került napvilágra egy Krad-papnak
@@ -91,27 +185,55 @@
 			<p>Mf: A karakter már ráérzett a mozgása koordinálására, képes akár mesterien védekezni (+15 VÉ, fegyver VÉ nem
 				számít), vagy akár úgy harapni, mint egy kutya (2k6 Sp)</p>
 		</div>
+
 		<div class="skills">
 			<h2>A további szinteken a következő képzettségeket kapja meg:</h2>
-			<p>2. szint: 1 fegyver dobása (Mf), Fegyvertörés (szájjal) (Af)</p>
-			<p>3. szint: Kocsmai verekedés (Mf), Nyomolvasás/Eltüntetés (Af)</p>
-			<p>5. szint: Ökölharc (Mf)</p>
-			<p>6. szint: Álcázás/Álruha (Mf)</p>
-			<p>7. szint: Sebgyógyítás (Mf)</p>
-			<p>8. szint: Fegyvertörés (szájjal) (Mf)</p>
-			<p>9. szint: Nyomolvasás/Eltüntetés (Mf), Írás/Olvasás (Mf)</p>
+			<ul>
+				<li>2. szint: 1 fegyver dobása (Mf), Fegyvertörés (szájjal) (Af)</li>
+				<li>3. szint: Kocsmai verekedés (Mf), Nyomolvasás/Eltüntetés (Af)</li>
+				<li>5. szint: Ökölharc (Mf)</li>
+				<li>6. szint: Álcázás/Álruha (Mf)</li>
+				<li>7. szint: Sebgyógyítás (Mf)</li>
+				<li>8. szint: Fegyvertörés (szájjal) (Mf)</li>
+				<li>9. szint: Nyomolvasás/Eltüntetés (Mf), Írás/Olvasás (Mf)</li>
+			</ul>
 		</div>
-		<div class="stats">
-			<h2>Választható fajok:</h2>
-			<p>Ember</p>
-			<p>Udvari ork (?)</p>
-			<p>Amund</p>
-			<p>Wier (?)</p>
-		</div>
-		<div class="stats">
-			<h2>Tapasztalati szint</h2>
-			<p>Mindenben megegyezik a Paplovagok szintlépésével.</p>
-		</div>
+
+		<table class="stats">
+			<thead>
+				<tr>
+					<th>Választható fajok</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Ember</td>
+				</tr>
+				<tr>
+					<td>Udvari ork (?)</td>
+				</tr>
+				<tr>
+					<td>Amund</td>
+				</tr>
+				<tr>
+					<td>Wier (?)</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="stats">
+			<thead>
+				<tr>
+					<th>Tapasztalati szint</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Mindenben megegyezik a Paplovagok szintlépésével.</td>
+				</tr>
+			</tbody>
+		</table>
+
 		<div class="description">
 			<h2>Az Ellana-Pusztító fegyvertára</h2>
 			<p>A Pusztítók korántsem annyira finnyásak a fegyverek használatában, mint az Ellana papnők, vagy Főpapnők. A
@@ -121,6 +243,7 @@
 			<p>Vértekben még ennyire sem támasztanak követelményt. Akármilyen páncélt felvesznek, de aki megteheti, abbitacél
 				sodronyinget húz.</p>
 		</div>
+
 		<p>By BlueAdam</p>
 	</div>
 </body>

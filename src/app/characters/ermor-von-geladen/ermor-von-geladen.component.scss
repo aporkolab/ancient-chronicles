@@ -1,0 +1,82 @@
+// Alapértelmezett stílusok
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  padding: 20px;
+}
+
+// Fejléc stílusai
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ffcc00;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+// Paragrafus stílusok
+p {
+  margin-bottom: 15px;
+}
+
+// Dőlt szöveg
+em {
+  font-style: italic;
+  color: #999999;
+}
+
+// Email link
+a {
+  color: #ffcc00;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Idézet stílusai
+blockquote {
+  font-size: 1.2rem;
+  color: #cccccc;
+  border-left: 5px solid #ffcc00;
+  padding-left: 15px;
+  margin: 20px 0;
+}
+
+// Félkövér szöveg
+strong {
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+// Fejezetcímek
+h2 {
+  font-size: 2rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #ffcc00;
+  border-bottom: 2px solid #ffcc00;
+  padding-bottom: 5px;
+}
+
+// Listák stílusa
+ul {
+  margin-bottom: 20px;
+  padding-left: 20px;
+
+  li {
+    margin-bottom: 10px;
+  }
+}
+
+// Speciális elemek
+code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #333333;
+  color: #ffcc00;
+  padding: 2px 5px;
+  border-radius: 3px;
+}

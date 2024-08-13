@@ -7,8 +7,14 @@ $button-bg-color: #2e2e2e;
 $button-hover-color: #444;
 $button-text-color: #e4e4e4;
 
-html {
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   font-family: "MedievalSharp", serif;
+  background: url('/assets/contact.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .ritual-container {

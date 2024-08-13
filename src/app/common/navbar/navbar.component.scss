@@ -34,3 +34,20 @@
     background-color: #495057;
   }
 }
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  /* A menü jobbra fog megjelenni */
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.dropdown-submenu.show>.dropdown-menu {
+  display: block;
+  position: absolute;
+}
