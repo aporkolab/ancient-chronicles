@@ -1,54 +1,98 @@
 .footer {
-  font-family: 'MedievalSharp', cursive;
+  font-family: 'Cinzel', serif;
+  background: radial-gradient(circle, #0d0d0d 0%, #1a1a1a 100%);
+  color: #d4d4d4;
   position: relative;
   overflow: hidden;
+  padding: 2.5rem 0;
 }
 
-.footer .list-unstyled {
+.footer-title {
+  color: #b0b0b0;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.footer-description {
+  color: rgba(212, 212, 212, 0.8);
+  font-size: 1rem;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.footer-links {
   padding-left: 0;
   list-style: none;
 }
 
-.footer .list-unstyled li {
-  margin-bottom: 0.5rem;
+.footer-link {
+  color: rgba(180, 180, 180, 0.8);
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.75rem;
+  transition: color 0.3s, text-shadow 0.3s;
 }
 
-.footer .text-muted {
-  color: rgba(255, 255, 255, 0.7) !important;
-  transition: color 0.3s;
+.footer-link:hover {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000;
 }
 
-.footer .text-muted:hover {
-  color: rgba(255, 255, 255, 1) !important;
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
-.footer-shapes {
+.footer-social-link {
+  color: rgba(180, 180, 180, 0.7);
+  transition: color 0.3s, transform 0.3s;
+}
+
+.footer-social-link:hover {
+  color: #ffffff;
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+}
+
+.footer-copyright {
+  color: rgba(212, 212, 212, 0.7);
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.footer-decoration {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100px;
+  height: 200px;
   overflow: hidden;
 }
 
-.footer-shapes .shape1,
-.footer-shapes .shape2 {
+.decor-shape {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
+  width: 150%;
+  height: 150%;
+  background: rgba(180, 180, 180, 0.1);
   border-radius: 50%;
-  animation: move 20s infinite alternate;
+  animation: move 25s infinite alternate;
 }
 
-.footer-shapes .shape1 {
-  top: -50%;
-  left: -10%;
+.shape1 {
+  top: -70%;
+  left: -20%;
 }
 
-.footer-shapes .shape2 {
-  top: -40%;
-  right: -20%;
+.shape2 {
+  top: -65%;
+  right: -25%;
 }
 
 @keyframes move {
@@ -57,6 +101,6 @@
   }
 
   100% {
-    transform: translate(10%, 10%);
+    transform: translate(15%, 15%);
   }
 }

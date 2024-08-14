@@ -62,7 +62,7 @@
 			<button (click)="stop()" data-tooltip="Stop">⏹</button>
 			<button (click)="playPrevious()" data-tooltip="Previous">⏮</button>
 			<button (click)="playNext()" data-tooltip="Next">⏭</button>
-			<label for="volume">🔊</label>
+			<label for="volume" id="volumeID">🔊</label>
 			<input id="volume" type="range" min="0" max="100" (input)="setVolume($event)">
 		</div>
 	</div>

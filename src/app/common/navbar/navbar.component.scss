@@ -1,37 +1,50 @@
 .navbar-brand {
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  color: #e0af49;
+  font-family: 'Cinzel', serif;
+  text-shadow: 2px 2px 4px #000;
 }
 
 .navbar-nav .nav-link {
-  color: #ddd;
+  color: #b0a08c;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.5px;
+  transition: color 0.3s, border-bottom 0.3s;
 
   &.active {
-    color: #fff;
+    color: #e0af49;
     font-weight: bold;
-    border-bottom: 2px solid #fff;
+    border-bottom: 3px solid #e0af49;
   }
 
   &:hover {
-    color: #fff;
+    color: #e0af49;
+    text-shadow: 1px 1px 3px #000;
   }
 }
 
 .dropdown-menu {
-  background-color: #343a40;
+  background-color: #1c1f23;
+  border: 1px solid #3a3f44;
+  border-radius: 5px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .dropdown-item {
-  color: #ddd;
+  color: #b0a08c;
+  font-family: 'Cinzel', serif;
+  padding: 10px 20px;
+  transition: color 0.3s, background-color 0.3s;
 
   &:hover {
-    color: #fff;
-    background-color: #495057;
+    color: #e0af49;
+    background-color: #2a2e32;
   }
 
   &.active {
-    color: #fff;
-    background-color: #495057;
+    color: #e0af49;
+    background-color: #2a2e32;
   }
 }
 
@@ -42,9 +55,12 @@
 .dropdown-submenu>.dropdown-menu {
   top: 0;
   left: 100%;
-  /* A menü jobbra fog megjelenni */
   margin-top: 0;
   margin-left: 0;
+  background-color: #1c1f23;
+  border: 1px solid #3a3f44;
+  border-radius: 5px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .dropdown-submenu.show>.dropdown-menu {

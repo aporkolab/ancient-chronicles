@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
 
+#volumeID {
+  align-content: center;
+}
+
 .jukebox {
   background: url('/assets/rpg-background.jpg') no-repeat center center;
   background-size: cover;
@@ -11,9 +15,7 @@
   font-family: 'Uncial Antiqua', cursive;
   transition: all 0.3s ease;
   position: relative;
-  /* Pozíció a pseudo-elemek helyes elrendezéséhez */
   overflow: hidden;
-  /* Biztosítja, hogy a tartalom ne lógjon ki */
 
   &.minimized {
     height: 100px;
@@ -23,20 +25,17 @@
     .minimized-content {
       display: flex;
       flex-direction: row;
-      /* Horizontális igazítás */
       align-items: center;
       justify-content: space-around;
-      /* Horizontálisan középre igazítás */
       height: 100%;
-      /* Kitölti a rendelkezésre álló teret */
-      height: 50%;
+      height: 20%;
+      text-align: center;
     }
 
     .minimized-visualizer {
       width: 150px;
       height: 50px;
       margin-right: 10px;
-      /* Távolság a vizualizáló és a többi elem között */
     }
 
     .track-info {
@@ -44,17 +43,14 @@
       padding: 0;
       text-align: center;
       margin-right: 10px;
-      /* Távolság a szöveg és a progress bar között */
     }
 
     .progress-bar {
       width: 100%;
-      /* A progress bar kitölti a rendelkezésre álló szélességet */
       height: 4px;
       background-color: #e0e0e0;
       border-radius: 2px;
       margin-right: 10px;
-      /* Távolság a progress bar és a gombok között */
     }
 
     .progress {
@@ -67,7 +63,6 @@
     .controls {
       display: flex;
       justify-content: flex-end;
-      /* Gombok jobb oldalra igazítása */
       width: auto;
 
       button {
@@ -79,7 +74,6 @@
         cursor: pointer;
         font-family: 'Uncial Antiqua', cursive;
         margin-left: 10px;
-        /* Kis távolság a gombok között */
       }
     }
   }
@@ -243,11 +237,9 @@
 .minimized-content .progress-bar {
   width: 100%;
   height: 4px;
-  /* Csökkentett szélesség és magasság a minimalizált nézethez */
   background-color: #e0e0e0;
   border-radius: 2px;
   margin-right: 10px;
-  /* Távolság a progress bar és a gombok között */
 }
 
 .minimized-content .progress {
@@ -259,21 +251,16 @@
 
 .controls button {
   font-size: 24px;
-  /* Nagyobb betűméret a gombikonokhoz */
   padding: 15px;
-  /* Több hely a gombok körül */
   margin: 5px;
-  /* Kisebb távolság a gombok között */
   cursor: pointer;
   position: relative;
 }
 
 .controls button:hover::after {
   content: attr(data-tooltip);
-  /* A tooltip szöveg megjelenítése */
   position: absolute;
   bottom: 100%;
-  /* A gomb fölött jelenik meg */
   left: 50%;
   transform: translateX(-50%);
   background-color: black;

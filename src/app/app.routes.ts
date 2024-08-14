@@ -23,6 +23,7 @@ import { ErmorVonGeladenComponent } from './characters/ermor-von-geladen/ermor-v
 import { DharrMenudoSyrusComponent } from './characters/dharr-menudo-syrus/dharr-menudo-syrus.component';
 import { IbeadraVeronikaTeaceaComponent } from './characters/ibeadra-veronika-teacea/ibeadra-veronika-teacea.component';
 import { SasszemuAhmShereComponent } from './characters/sasszemu-ahm-shere/sasszemu-ahm-shere.component';
+import { ManaNyeloComponent } from './shortstories/mana-nyelo/mana-nyelo.component';
 
 export const routes: Routes = [
 	{ path: '', redirectTo: '/monsters', pathMatch: 'full' },
@@ -47,6 +48,10 @@ export const routes: Routes = [
 	{
 		path: 'adventures',
 		component: AdventuresOverviewComponent // Adventures főoldal
+	},
+	{
+		path: 'shortStories/mana-nyelo',
+		component: ManaNyeloComponent // Mélysivatag oldal közvetlenül elérhető
 	},
 	{
 		path: 'adventures/melysivatag',
@@ -111,7 +116,11 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
+	imports: [RouterModule.forRoot(routes, {
+		anchorScrolling: 'enabled',
+		onSameUrlNavigation: 'reload',
+		scrollPositionRestoration: 'enabled'
+	})],
 	exports: [RouterModule]
 })
 export class AppRoutingModule { }

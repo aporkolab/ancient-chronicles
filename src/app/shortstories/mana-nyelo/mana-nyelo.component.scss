@@ -1,0 +1,108 @@
+// Alap beállítások
+body {
+  font-family: 'MedievalSharp',
+    serif;
+  background-color: #1a1a1a;
+  color: #dcdcdc;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  text-shadow: 1px 1px 2px #000; // Finom árnyék a szövegre, hogy kiemelkedjen
+  font-size: 2rem;
+}
+
+// Címsorok
+h1,
+h2,
+h3 {
+  font-family: 'Cinzel Decorative', serif; // Díszes betűtípus a címsorokhoz, középkori hangulattal
+  color: #b8860b; // Aranybarna szín a címekhez, elegáns és figyelemfelkeltő
+  text-shadow: 2px 2px 4px #000; // Erősebb árnyék a címsoroknak
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 3em;
+  margin-top: 40px;
+}
+
+h2 {
+  font-size: 2.5em;
+  margin-top: 30px;
+}
+
+h3 {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+// Bevezető és egyéb szövegek
+p {
+  margin-bottom: 20px;
+}
+
+a {
+  color: #ff4500; // Intenzív narancssárga szín a linkekhez
+  text-decoration: none;
+  border-bottom: 2px dotted #ff4500; // Díszített aláhúzás a linkekhez
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+a:hover {
+  color: #ff6347; // Világosabb narancssárga, amikor a link fölé viszed az egeret
+  border-bottom: 2px solid #ff6347;
+}
+
+// Idézetek
+blockquote {
+  font-style: italic;
+  background-color: #2b2b2b; // Sötét háttér az idézetekhez
+  border-left: 5px solid #b8860b; // Aranybarna szegély, ami illeszkedik a címsorokhoz
+  margin: 20px 0;
+  padding: 20px;
+  color: #e6e6e6;
+  text-shadow: 1px 1px 3px #000;
+}
+
+// Szekciók
+section {
+  margin: 40px 0;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.75); // Áttetsző fekete háttér, ami misztikus hatást kelt
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.9); // Mély árnyék a sötét, sejtelmes hangulatért
+}
+
+// Képek stílusa
+img {
+  max-width: 100%;
+  height: auto;
+  border: 5px solid #3b3b3b; // Sötét szegély a képekhez
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.85);
+}
+
+// Középre igazítás
+.center {
+  text-align: center;
+}
+
+// Gombok
+button {
+  background-color: #333333; // Sötét háttér a gombokhoz
+  color: #b8860b; // Aranybarna szöveg
+  padding: 10px 20px;
+  border: 2px solid #b8860b;
+  border-radius: 5px;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.2em;
+  cursor: pointer;
+  text-shadow: 1px 1px 2px #000;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #b8860b;
+  color: #333333;
+  border-color: #dcdcdc;
+}

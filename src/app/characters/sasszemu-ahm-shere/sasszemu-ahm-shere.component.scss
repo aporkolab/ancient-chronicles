@@ -1,75 +1,114 @@
 body {
-  background-color: #1b1b1b;
-  color: #d1d1d1;
-  font-family: 'Garamond', serif;
-  line-height: 1.6;
-  margin: 0;
+  background: url('/assets/parchment-background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Uncial Antiqua', cursive;
+  color: #2b2b2b;
   padding: 20px;
+  position: relative;
+  min-height: 100vh;
 }
 
-a {
-  color: #bfa136;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #e0e0e0;
-  margin-bottom: 10px;
-}
-
-hr {
-  border: 0;
-  height: 1px;
-  background: #444;
-  margin: 40px 0;
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid #2b2b2b;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
 .center {
   text-align: center;
 }
 
-.highlight {
-  color: #ff6600;
-  font-weight: bold;
+h1,
+h2,
+h3 {
+  color: #6b0000;
+  font-family: 'MedievalSharp', serif;
+  text-shadow: 2px 2px #000;
+  margin-bottom: 20px;
 }
 
-table {
+p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-family: 'MedievalSharp', serif;
+}
+
+.character-image {
+  max-width: 100%;
+  border: 3px solid #6b0000;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+}
+
+.character-table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
-}
-
-table,
-th,
-td {
-  border: 1px solid #444;
-}
-
-th,
-td {
-  padding: 10px;
+  font-size: 1.1em;
   text-align: left;
+  font-family: 'MedievalSharp', serif;
 }
 
-th {
-  background-color: #2d2d2d;
-  color: #bfa136;
+.character-table th,
+.character-table td {
+  padding: 12px 15px;
+  border: 2px solid #6b0000;
 }
 
-td {
-  background-color: #2a2a2a;
+.character-table th {
+  background-color: #6b0000;
+  color: #fff;
+  text-shadow: 2px 2px #000;
+}
+
+.character-table tr:nth-child(even) {
+  background-color: rgba(107, 0, 0, 0.1);
+}
+
+.character-table tr:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+blockquote {
+  font-size: 1.3em;
+  font-style: italic;
+  color: #4a4a4a;
+  border-left: 5px solid #6b0000;
+  padding-left: 10px;
+  margin-left: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 15px;
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba(107, 0, 0, 0), rgba(107, 0, 0, 0.75), rgba(107, 0, 0, 0));
+  margin: 30px 0;
 }
 
 .description {
   font-style: italic;
-  margin: 20px 0;
+  color: #5e5e5e;
+  font-family: 'MedievalSharp', serif;
+}
+
+a {
+  color: #0000EE;
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #551A8B;
+  text-decoration: underline;
 }

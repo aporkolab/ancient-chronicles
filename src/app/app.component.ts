@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./common/navbar/navbar.component";
 import { JukeboxComponent } from "./common/jukebox/jukebox.component";
 import { CopyrightBarComponent } from "./common/copyright-bar/copyright-bar.component";
@@ -11,7 +11,7 @@ import { FormsModule } from "@angular/forms";
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [RouterOutlet, NavbarComponent, FormsModule, CopyrightBarComponent, CommonModule, JukeboxComponent]
+  imports: [RouterOutlet, NavbarComponent, FormsModule, CopyrightBarComponent, CommonModule, JukeboxComponent, RouterModule]
 })
 export class AppComponent {
   title = 'ancient-chronicles';

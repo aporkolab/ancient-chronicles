@@ -1,37 +1,136 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
+  background: url('/assets/parchment-background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'MedievalSharp', serif;
+  color: #2c2c2c;
   padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 .container {
-  background-color: #fff;
+  max-width: 900px;
+  margin: 0 auto;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin: auto;
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid #2c2c2c;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1;
+  animation: fadeInContainer 1.5s;
 }
 
 h1 {
   text-align: center;
-  color: #333;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px #000;
+  color: #8b0000;
+  animation: glow 2s infinite alternate;
 }
 
-img {
-  display: block;
-  margin: 0 auto 20px;
-  max-width: 100%;
+h2 {
+  color: #8b0000;
+  font-size: 1.8em;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px #000;
+}
+
+.character-image {
+  width: 100%;
   height: auto;
-  border-radius: 8px;
+  border: 3px solid #8b0000;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
 }
 
-p {
-  line-height: 1.6;
-  color: #555;
+.character-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #8b0000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  animation: tableFadeIn 1.5s ease-in-out;
 }
 
-.italic {
+.character-table th,
+.character-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 2px solid #8b0000;
+}
+
+.character-table th {
+  background-color: #8b0000;
+  color: #fff;
+  font-family: 'MedievalSharp', serif;
+  font-size: 1.2em;
+  text-shadow: 2px 2px #000;
+  border-top: 2px solid #8b0000;
+}
+
+.character-table tr:nth-child(even) {
+  background: rgba(139, 0, 0, 0.1);
+}
+
+.character-table tr:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+blockquote {
   font-style: italic;
+  background-color: #f5f5f5;
+  border-left: 5px solid #8b0000;
+  margin: 20px 0;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: #2c2c2c;
+}
+
+.description,
+.appearance,
+.origin,
+.motto,
+.summary {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+@keyframes fadeInContainer {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000;
+  }
+
+  100% {
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000;
+  }
+}
+
+@keyframes tableFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
