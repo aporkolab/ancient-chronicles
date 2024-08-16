@@ -7,6 +7,7 @@ body {
   position: relative;
   overflow-x: hidden;
   min-height: 100vh;
+  font-size: 1.5rem;
 }
 
 .candle-light {
@@ -262,4 +263,8 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   animation: fadeInContainer 1.5s;
+}
+
+#logo {
+  border-radius: 40%;
 }

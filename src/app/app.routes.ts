@@ -24,86 +24,90 @@ import { DharrMenudoSyrusComponent } from './characters/dharr-menudo-syrus/dharr
 import { IbeadraVeronikaTeaceaComponent } from './characters/ibeadra-veronika-teacea/ibeadra-veronika-teacea.component';
 import { SasszemuAhmShereComponent } from './characters/sasszemu-ahm-shere/sasszemu-ahm-shere.component';
 import { ManaNyeloComponent } from './shortstories/mana-nyelo/mana-nyelo.component';
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
-	{ path: '', redirectTo: '/monsters', pathMatch: 'full' },
 	{ path: 'navbar', loadComponent: () => import('./common/navbar/navbar.component').then(m => m.NavbarComponent) },
 	{ path: 'jukebox', loadComponent: () => import('./common/jukebox/jukebox.component').then(m => m.JukeboxComponent) },
 	{
+		path: '',
+		component: HomeComponent
+	},
+	{
 		path: 'monsters',
-		component: MonstersOverviewComponent // Monsters főoldal
+		component: MonstersOverviewComponent
 	},
 	{
 		path: 'monsters/arnyhalal',
-		component: ArnyhalalComponent // Árnyhalál oldal közvetlenül elérhető
+		component: ArnyhalalComponent
 	},
 	{
 		path: 'monsters/bajverno',
-		component: BajvernoComponent // Bajverno oldal közvetlenül elérhető
+		component: BajvernoComponent
 	},
 	{
 		path: 'monsters/lelekroppanto',
-		component: LelekroppantoComponent // Lélekröppantó oldal közvetlenül elérhető
+		component: LelekroppantoComponent
 	},
 	{
 		path: 'adventures',
-		component: AdventuresOverviewComponent // Adventures főoldal
+		component: AdventuresOverviewComponent
 	},
 	{
 		path: 'shortStories/mana-nyelo',
-		component: ManaNyeloComponent // Mélysivatag oldal közvetlenül elérhető
+		component: ManaNyeloComponent
 	},
 	{
 		path: 'adventures/melysivatag',
-		component: MelysivatagComponent // Mélysivatag oldal közvetlenül elérhető
+		component: MelysivatagComponent
 	},
 	{
 		path: 'characters',
-		component: CharactersOverviewComponent // Characters főoldal
+		component: CharactersOverviewComponent
 	},
 	{
 		path: 'characters/gonis-tue',
-		component: GonisTueComponent // Gonis Tue oldal közvetlenül elérhető
+		component: GonisTueComponent
 	},
 	{
 		path: 'characters/sasszemu-ahm-shere',
-		component: SasszemuAhmShereComponent // Gonis Tue oldal közvetlenül elérhető
+		component: SasszemuAhmShereComponent
 	},
 	{
 		path: 'characters/emphasis-del-tomorrow',
-		component: EmphasisDelTomorrowComponent // Emphasis Del Tomorrow oldal közvetlenül elérhető
+		component: EmphasisDelTomorrowComponent
 	},
 	{
 		path: 'characters/ermor-von-geladen',
-		component: ErmorVonGeladenComponent // Ermor Von Geladen oldal közvetlenül elérhető
+		component: ErmorVonGeladenComponent
 	},
 	{
 		path: 'characters/dharr-menudo-syrus',
-		component: DharrMenudoSyrusComponent // Dharr Menudo Syrus oldal közvetlenül elérhető
+		component: DharrMenudoSyrusComponent
 	},
 	{
 		path: 'characters/ibeadra-veronika-teacea',
-		component: IbeadraVeronikaTeaceaComponent // Ibeadra Veronika Teacea oldal közvetlenül elérhető
+		component: IbeadraVeronikaTeaceaComponent
 	},
 	{
 		path: 'classes',
-		component: ClassesOverviewComponent, // Classes főoldal
+		component: ClassesOverviewComponent,
 	},
 	{
 		path: 'classes/warrior',
-		component: WarriorComponent // Warrior oldal közvetlenül elérhető
+		component: WarriorComponent
 	},
 	{
 		path: 'classes/priests',
-		component: PriestsComponent // Priests főoldal
+		component: PriestsComponent
 	},
 	{
 		path: 'classes/priests/ellana-fopapno',
-		component: EllanafopapnoComponent // Ellana Főpapnő oldal közvetlenül elérhető
+		component: EllanafopapnoComponent
 	},
 	{
 		path: 'classes/priests/ellana-pusztito',
-		component: EllanapusztitoComponent // Ellana Pusztító oldal közvetlenül elérhető
+		component: EllanapusztitoComponent
 	},
 	{
 		path: 'classes/warriors/hilvar',
