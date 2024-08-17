@@ -1,12 +1,13 @@
 <div class="jukebox" [class.minimized]="isMinimized">
 	<div class="header">
-		<button (click)="toggleMinimize()" [class.active]="isMinimized" data-tooltip="Toggle Maximize/Minimize">
+		<button (click)="toggleMinimize()" [class.active]="isMinimized" data-tooltip="Kicsinyítés/Nagyítás"
+			id="minimizeButton">
 			{{ isMinimized ? '⤢' : '⤡' }}
 		</button>
 	</div>
 	<div *ngIf="!isMinimized" class="content">
 		<div class="track-list">
-			<h2>Track List</h2>
+			<h2>Dalok listája</h2>
 			<ul>
 				<li *ngFor="let track of tracks" (click)="play(track.filename)"
 					[class.active]="currentTrack?.filename === track.filename">
@@ -15,35 +16,39 @@
 			</ul>
 		</div>
 		<div class="controls">
-			<button (click)="stop()" data-tooltip="Stop">⏹</button>
-			<button (click)="pause()" data-tooltip="Pause">⏸</button>
-			<button (click)="playCurrent()" data-tooltip="Play">⏵</button>
-			<button (click)="playPrevious()" data-tooltip="Previous">⏮</button>
-			<button (click)="playNext()" data-tooltip="Next">⏭</button>
-			<button (click)="toggleLoop()" [class.active]="isLooping" data-tooltip="Toggle Loop">🔁</button>
-			<button (click)="toggleShuffle()" [class.active]="isShuffling" data-tooltip="Toggle Shuffle">🔀</button>
-			<button (click)="toggleVisualizer()" [class.active]="showVisualizer" data-tooltip="Toggle Visualizer">🎵</button>
-			<button (click)="toggleEqualizer()" [class.active]="showEqualizer" data-tooltip="Toggle Equalizer">🎚</button>
-			<label for="volume">🔊</label>
+			<button (click)="stop()" data-tooltip="Leállítás">⏹</button>
+			<button (click)="togglePlayPause()" [attr.data-tooltip]="getTooltipText()">
+				{{ isPlaying() ? '⏸' : '⏵' }}
+			</button>
+			<button (click)="playPrevious()" data-tooltip="Előző">⏮</button>
+			<button (click)="playNext()" data-tooltip="Következő">⏭</button>
+			<button (click)="toggleLoop()" [class.active]="isLooping" data-tooltip="Ismétlés">🔁</button>
+			<button (click)="toggleShuffle()" [class.active]="isShuffling" data-tooltip="Véletlenszerű lejátszás">🔀</button>
+			<button (click)="toggleVisualizer()" [class.active]="showVisualizer" data-tooltip="Vizualizáló">🎵</button>
+			<button (click)="toggleEqualizer()" [class.active]="showEqualizer" data-tooltip="Hangszínszabályzó">🎚</button>
+			<label for="volume" style="margin-left: 20px;">🔊</label>
 			<input id="volume" type="range" min="0" max="100" (input)="setVolume($event)">
 		</div>
-		<div class="track-info" *ngIf="currentTrack">
-			<h3>Now Playing:</h3>
-			<p><strong>Title:</strong> {{ currentTrack.title }}</p>
-			<p><strong>Author:</strong> {{ currentTrack.author }}</p>
-			<p><strong>Lyricist:</strong> {{ currentTrack.lyricist }}</p>
+		<div [ngClass]="currentClass" *ngIf="currentTrack">
+			<h3>Jelenleg lejátszva:</h3>
+			<p><strong>Cím:</strong> {{ currentTrack.title }}</p>
+			<p><strong>Szerző:</strong> {{ currentTrack.author }}</p>
+			<p><strong>Dalszövegíró:</strong> {{ currentTrack.lyricist }}</p>
 			<div class="progress-bar" (click)="seek($event)">
 				<div class="progress" [style.width.%]="getProgress()"></div>
 			</div>
+		</div>
+		<div *ngIf="!currentTrack">
+			<h3>Jelenleg nincsen lejátszott dal.</h3>
 		</div>
 		<div class="visualizer" *ngIf="showVisualizer">
 			<canvas #visualizerCanvas></canvas>
 		</div>
 		<div class="equalizer-controls" *ngIf="showEqualizer">
-			<label>Bass Boost</label>
-			<input type="range" min="0" max="100" (input)="setBassBoost($event)" title="Bass Boost">
-			<label>Treble Boost</label>
-			<input type="range" min="0" max="100" (input)="setTrebleBoost($event)" title="Treble Boost">
+			<label>Basszus kiemelés</label>
+			<input type="range" min="0" max="100" (input)="setBassBoost($event)" title="Basszus kiemelés">
+			<label>Magas kiemelés</label>
+			<input type="range" min="0" max="100" (input)="setTrebleBoost($event)" title="Magas kiemelés">
 		</div>
 	</div>
 	<div *ngIf="isMinimized" class="minimized-content">
@@ -51,18 +56,19 @@
 			<canvas #visualizerCanvas></canvas>
 		</div>
 		<div class="track-info">
-			<p><strong>Title:</strong> {{ currentTrack?.title }}</p>
+			<p><strong>{{ currentTrack ? 'Cím:' : 'Jelenleg nincsen lejátszott dal.' }} {{ currentTrack?.title }}</strong></p>
 		</div>
 		<div class="progress-bar" (click)="seek($event)">
 			<div class="progress" [style.width.%]="getProgress()"></div>
 		</div>
 		<div class="controls">
-			<button (click)="playCurrent()" data-tooltip="Play">⏵</button>
-			<button (click)="pause()" data-tooltip="Pause">⏸</button>
-			<button (click)="stop()" data-tooltip="Stop">⏹</button>
-			<button (click)="playPrevious()" data-tooltip="Previous">⏮</button>
-			<button (click)="playNext()" data-tooltip="Next">⏭</button>
-			<label for="volume" id="volumeID">🔊</label>
+			<button (click)="togglePlayPause()" [attr.data-tooltip]="getTooltipText()">
+				{{ isPlaying() ? '⏸' : '⏵' }}
+			</button>
+			<button (click)="stop()" data-tooltip="Leállítás">⏹</button>
+			<button (click)="playPrevious()" data-tooltip="Előző">⏮</button>
+			<button (click)="playNext()" data-tooltip="Következő">⏭</button>
+			<label for="volume" id="volumeID" style="margin-left: 20px;">🔊</label>
 			<input id="volume" type="range" min="0" max="100" (input)="setVolume($event)">
 		</div>
 	</div>

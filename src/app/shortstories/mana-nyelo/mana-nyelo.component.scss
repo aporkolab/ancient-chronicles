@@ -15,7 +15,8 @@ body {
 h1,
 h2,
 h3 {
-  font-family: 'Cinzel Decorative', serif; // Díszes betűtípus a címsorokhoz, középkori hangulattal
+  font-family: "Ga Maamli",
+    sans-serif;
   color: #b8860b; // Aranybarna szín a címekhez, elegáns és figyelemfelkeltő
   text-shadow: 2px 2px 4px #000; // Erősebb árnyék a címsoroknak
   margin-bottom: 20px;
@@ -39,6 +40,12 @@ h3 {
 // Bevezető és egyéb szövegek
 p {
   margin-bottom: 20px;
+}
+
+.vege {
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a {
@@ -94,7 +101,8 @@ button {
   padding: 10px 20px;
   border: 2px solid #b8860b;
   border-radius: 5px;
-  font-family: 'Cinzel Decorative', serif;
+  font-family: "Ga Maamli",
+    sans-serif;
   font-size: 1.2em;
   cursor: pointer;
   text-shadow: 1px 1px 2px #000;
@@ -105,4 +113,35 @@ button:hover {
   background-color: #b8860b;
   color: #333333;
   border-color: #dcdcdc;
+}
+
+.image-placeholder {
+  width: 50%;
+  height: 50%;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  background: #e0e0e0;
+  border: 2px dashed #2c2c2c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  color: #2c2c2c;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.image-placeholder img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s, filter 0.5s;
+  filter: brightness(0.8);
+}
+
+.image-placeholder img:hover {
+  transform: scale(1.05);
+  filter: brightness(1);
 }

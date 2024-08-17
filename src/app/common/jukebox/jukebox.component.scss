@@ -4,8 +4,17 @@
   align-content: center;
 }
 
+#minimizeButton {
+  backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
+  width: 5%;
+  /* Szélesség növelése (például 100%, vagy fix érték) */
+  height: auto;
+  color: wheat;
+}
+
 .jukebox {
-  background: url('/assets/rpg-background.jpg') no-repeat center center;
+  background: url('/assets/rpg-background.png') no-repeat center center;
   background-size: cover;
   padding: 20px;
   border: 2px solid #ccc;
@@ -21,6 +30,8 @@
     height: 100px;
     padding: 10px;
     overflow: hidden;
+    color: rgb(124, 124, 124);
+
 
     .minimized-content {
       display: flex;
@@ -39,15 +50,27 @@
     }
 
     .track-info {
-      flex-grow: 1;
-      padding: 0;
+      flex-grow: 2;
+      padding: 0.5rem;
       text-align: center;
       margin-right: 10px;
+      position: relative;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.2);
+      color: white;
+      border-radius: 5px;
+      overflow: hidden;
+      backdrop-filter: blur(1rem);
+      -webkit-backdrop-filter: blur(1rem);
+      width: 30%;
+      /* Szélesség növelése (például 100%, vagy fix érték) */
+      height: auto;
+
     }
 
     .progress-bar {
       width: 100%;
-      height: 4px;
+      height: 8px;
       background-color: #e0e0e0;
       border-radius: 2px;
       margin-right: 10px;
@@ -81,6 +104,7 @@
   .header {
     display: flex;
     justify-content: flex-end;
+    margin-right: 10px;
 
     button {
       background: rgba(0, 0, 0, 0.7);
@@ -89,7 +113,7 @@
       color: #fff;
       cursor: pointer;
       font-family: 'Uncial Antiqua', cursive;
-      padding: 5px 10px;
+      padding: 10px 20px;
 
       &:hover {
         background: rgba(255, 255, 255, 0.1);
@@ -99,6 +123,10 @@
         background: rgba(255, 255, 255, 0.2);
       }
     }
+  }
+
+  .minimized-content .controls label {
+    margin-left: 20px; // A volume bar és a gombok közötti távolság növelése
   }
 
   .content {
@@ -167,29 +195,23 @@
       }
     }
 
-    .track-info {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 20px;
-
-      h3 {
-        text-align: center;
-        font-family: 'Uncial Antiqua', cursive;
-      }
-
-      .progress-bar {
-        background: #444;
-        border-radius: 5px;
-        overflow: hidden;
-        cursor: pointer;
-
-        .progress {
-          height: 10px;
-          background: #4caf50;
-        }
-      }
+    .track-info h3 {
+      text-align: center;
+      font-family: 'Uncial Antiqua', cursive;
     }
+
+    .track-info .progress-bar {
+      background: #444;
+      border-radius: 5px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .track-info .progress-bar .progress {
+      height: 1rem;
+      background: #4caf50;
+    }
+
 
     .visualizer {
       margin-bottom: 20px;

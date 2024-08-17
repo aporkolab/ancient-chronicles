@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   templateUrl: './jukebox.component.html',
   styleUrls: ['./jukebox.component.scss'],
-  imports: [CommonModule]
+  imports: [CommonModule]  // További szükséges modulok itt hozzáadhatók, pl. FormsModule, ReactiveFormsModule
 })
 export class JukeboxComponent implements AfterViewInit {
   currentTrack: any = null;
@@ -15,6 +15,7 @@ export class JukeboxComponent implements AfterViewInit {
   showVisualizer: boolean = false;
   showEqualizer: boolean = false;
   isMinimized: boolean = true;
+  currentClass = 'cont track-info';
   audioContextInitialized: boolean = false;
   tracks: Array<{ title: string, filename: string, author: string, lyricist: string, duration: string }> = [
     { title: 'Frostbound Journey', filename: 'Frostbound_Journey.mp3', author: '', lyricist: '', duration: '3:45' },
@@ -87,7 +88,6 @@ export class JukeboxComponent implements AfterViewInit {
     }
   }
 
-
   stop() {
     this.audio.pause();
     this.audio.currentTime = 0;
@@ -99,11 +99,23 @@ export class JukeboxComponent implements AfterViewInit {
     this.audio.pause();
   }
 
-  playCurrent() {
-    if (this.currentTrack) {
-      this.audio.play();
+  /**
+   * Lejátsza az aktuális vagy megadott számot.
+   * @param filename Az audiofájl neve (ha meg van adva).
+   */
+  play(filename?: string) {
+    this.startAudioContext();
+    const filePath = filename ? `music/${filename}` : null;
+
+    if (filePath && this.currentTrack?.filename !== filename) {
+      this.currentTrack = this.tracks.find(t => t.filename === filename) || null;
+      if (this.currentTrack) {
+        this.audio.src = filePath;
+        this.audio.load(); // Biztosítjuk, hogy a fájl újra betöltődjön.
+        this.audio.play();
+      }
     } else {
-      this.play(this.tracks[0].filename);
+      this.audio.play();
     }
   }
 
@@ -118,7 +130,6 @@ export class JukeboxComponent implements AfterViewInit {
   toggleEqualizer() {
     this.showEqualizer = !this.showEqualizer;
   }
-
 
   stopVisualizer() {
     if (this.visualizerCanvas) {
@@ -137,15 +148,15 @@ export class JukeboxComponent implements AfterViewInit {
   }
 
   fadeOut() {
-    let volume = this.audio.volume;
-    const fadeInterval = setInterval(() => {
-      if (volume > 0) {
-        volume -= 0.1;
-        this.audio.volume = volume;
+    const fadeStep = () => {
+      if (this.audio.volume > 0.01) {
+        this.audio.volume -= 0.01;
+        requestAnimationFrame(fadeStep);
       } else {
-        clearInterval(fadeInterval);
+        this.audio.volume = 0;
       }
-    }, 200);
+    };
+    fadeStep();
   }
 
   autoMaster() {
@@ -183,34 +194,18 @@ export class JukeboxComponent implements AfterViewInit {
     this.audio.currentTime = seekTime;
   }
 
+  /**
+   * Lejátssza az előző számot a lejátszási listában.
+   */
   playPrevious() {
-    if (this.currentTrack) {
-      let currentIndex = this.tracks.indexOf(this.currentTrack);
-      if (currentIndex === 0) {
-        currentIndex = this.tracks.length - 1; // Az utolsó számra ugrik, ha az elsőnél van
-      } else {
-        currentIndex -= 1;
-      }
-      this.play(this.tracks[currentIndex].filename);
-    } else {
-      this.play(this.tracks[this.tracks.length - 1].filename); // Az utolsó számot játssza, ha nincs aktuális szám
-    }
+    let currentIndex = this.tracks.indexOf(this.currentTrack);
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : this.tracks.length - 1;
+    this.play(this.tracks[currentIndex].filename);
   }
 
-  playNext() {
-    if (this.currentTrack) {
-      let currentIndex = this.tracks.indexOf(this.currentTrack);
-      if (currentIndex === this.tracks.length - 1) {
-        currentIndex = 0; // Az első számra ugrik, ha az utolsónál van
-      } else {
-        currentIndex += 1;
-      }
-      this.play(this.tracks[currentIndex].filename);
-    } else {
-      this.play(this.tracks[0].filename); // Az első számot játssza, ha nincs aktuális szám
-    }
-  }
-
+  /**
+   * Lejátssza a következő számot a lejátszási listában, vagy keverés esetén véletlenszerűen.
+   */
   playNextTrack() {
     if (this.isShuffling) {
       this.playRandomTrack();
@@ -235,7 +230,6 @@ export class JukeboxComponent implements AfterViewInit {
     this.play(this.tracks[randomIndex].filename);
   }
 
-
   toggleMinimize() {
     this.isMinimized = !this.isMinimized;
 
@@ -249,19 +243,20 @@ export class JukeboxComponent implements AfterViewInit {
       return;
     }
 
-    // Újraindítjuk az AudioContext-et és az AnalyserNode-ot
-    this.audioContext.close().then(() => {
+    if (this.audioContext.state !== 'closed') {
+      this.analyser.disconnect();
+      this.source!.disconnect();
+      this.source!.connect(this.analyser);
+      this.analyser.connect(this.audioContext.destination);
+    } else {
       this.audioContext = new AudioContext();
       this.analyser = this.audioContext.createAnalyser();
       this.source = this.audioContext.createMediaElementSource(this.audio);
-
-      // Csatlakoztatjuk a forrást és az AnalyserNode-ot
       this.source.connect(this.analyser);
       this.analyser.connect(this.audioContext.destination);
+    }
 
-      // Elindítjuk a vizualizátort
-      this.startVisualizer();
-    });
+    this.startVisualizer();
   }
 
   startVisualizer() {
@@ -311,20 +306,41 @@ export class JukeboxComponent implements AfterViewInit {
     }
   }
 
-  play(filename: string) {
-    this.startAudioContext();
-    const filePath = `music/${filename}`;
-    if (this.currentTrack && this.currentTrack.filename === filename && !this.audio.paused) {
-      this.audio.pause();
+  togglePlayPause() {
+    if (this.audio.paused) {
+      this.playCurrent();
     } else {
-      this.currentTrack = this.tracks.find(t => t.filename === filename);
-      this.audio.src = filePath;
+      this.pause();
+    }
+  }
 
-      if (this.showVisualizer) {
-        this.restartVisualizer();  // Újraindítás a biztos működésért
-      }
-
+  playCurrent() {
+    if (this.currentTrack) {
       this.audio.play();
+    } else {
+      this.play(this.tracks[0].filename);
+    }
+  }
+
+  isPlaying(): boolean {
+    return !this.audio.paused;
+  }
+
+  getTooltipText(): string {
+    return this.isPlaying() ? 'Szüneteltetés' : 'Lejátszás';
+  }
+
+  playNext() {
+    if (this.currentTrack) {
+      let currentIndex = this.tracks.indexOf(this.currentTrack);
+      if (currentIndex === this.tracks.length - 1) {
+        currentIndex = 0; // Az első számra ugrik, ha az utolsónál van
+      } else {
+        currentIndex += 1;
+      }
+      this.play(this.tracks[currentIndex].filename);
+    } else {
+      this.play(this.tracks[0].filename); // Az első számot játssza, ha nincs aktuális szám
     }
   }
 }
