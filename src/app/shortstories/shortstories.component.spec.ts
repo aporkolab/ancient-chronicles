@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClassesOverviewComponent } from './classes-overview.component';
+import { ShortstoriesComponent } from './shortstories.component';
 
-describe('ClassesOverviewComponent', () => {
-  let component: ClassesOverviewComponent;
-  let fixture: ComponentFixture<ClassesOverviewComponent>;
+describe('ShortstoriesComponent', () => {
+  let component: ShortstoriesComponent;
+  let fixture: ComponentFixture<ShortstoriesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ClassesOverviewComponent]
+      imports: [ShortstoriesComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ClassesOverviewComponent);
+    fixture = TestBed.createComponent(ShortstoriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

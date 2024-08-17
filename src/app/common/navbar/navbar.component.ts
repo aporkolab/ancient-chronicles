@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   currentUrl: string = '';
   isPriestsMenuOpen = false;
   isWarriorsMenuOpen = false;
+  bootstrap: any;
 
   constructor(private router: Router) { }
 
@@ -36,4 +37,19 @@ export class NavbarComponent implements OnInit {
   toggleWarriorsMenu(isOpen: boolean) {
     this.isWarriorsMenuOpen = isOpen;
   }
+
+  onDropdownLinkClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+
+    const elementId = target.id.replace('Dropdown', '');
+
+    if (target.classList.contains('dropdown-toggle') && target.getAttribute('aria-expanded') === 'false') {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      target.click();
+    } else {
+      this.router.navigateByUrl(`/${elementId}`);
+    }
+  }
+
 }
