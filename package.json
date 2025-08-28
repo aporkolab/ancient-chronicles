@@ -7,7 +7,7 @@
     "build": "ng build --configuration=production",
     "watch": "ng build --watch --configuration=development",
     "test": "ng test",
-    "deploy": "ng build --base-href /ancient-chronicles/ && ngh --dir dist/ancient-chronicles/browser"
+    "deploy": "ng build --base-href / && ngh --dir dist/ancient-chronicles/browser"
   },
   "private": true,
   "homepage": "https://chronica.porkolab.hu",
