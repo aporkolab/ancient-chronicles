@@ -1,4 +1,4 @@
-# Ancient Chronicles: Archive of M.A.G.U.S. Writings
+# Ancient Chronicles: Archive of M.A.G.U.S. RPG Writings
 
 <p align="center">
   <img src="public/assets/logo.png" alt="Ancient Chronicles Logo" width="400"/>
