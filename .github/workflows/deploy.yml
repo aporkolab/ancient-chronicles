@@ -24,6 +24,6 @@ jobs:
         run: npm i
 
       - name: Deploy to GitHub Pages
-        run: npx ng deploy --base-href=/ --no-silent --name='github-actions[bot]' --email='github-actions[bot]@users.noreply.github.com'
+        run: npx ng deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
