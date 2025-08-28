@@ -6,7 +6,8 @@
     "start": "npx serve -s dist/ancient-chronicles/browser",
     "build": "ng build --configuration=production",
     "watch": "ng build --watch --configuration=development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng build --base-href /ancient-chronicles/ && ngh --dir dist/ancient-chronicles/browser"
   },
   "private": true,
   "homepage": "https://chronica.porkolab.hu",
@@ -39,6 +40,7 @@
     "@angular/compiler-cli": "20.2.2",
     "@types/estree": "^1.0.5",
     "@types/jasmine": "~5.1.0",
+    "angular-cli-ghpages": "^2.0.3",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
