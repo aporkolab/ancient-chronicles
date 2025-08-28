@@ -95,6 +95,14 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/",
+            "name": "github-actions[bot]",
+            "email": "github-actions[bot]@users.noreply.github.com"
+          }
         }
       }
     }
