@@ -1,270 +1,93 @@
-body {
-  background: url('/assets/parchment-background.jpg') no-repeat center center fixed;
-  background-size: cover;
-  font-family: 'MedievalSharp', serif;
-  color: #2c2c2c;
-  padding: 20px;
-  position: relative;
-  overflow-x: hidden;
-  min-height: 100vh;
-  font-size: 1.4rem;
-}
-
-.candle-light {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle, rgba(255, 184, 108, 0.9), rgba(0, 0, 0, 0.85));
-  border-radius: 50%;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  animation: flicker 2s infinite alternate;
-  z-index: 100;
-}
-
-@keyframes flicker {
-  0% {
-    opacity: 0.9;
-    transform: translateY(-5px);
-  }
-
-  50% {
-    opacity: 0.8;
-    transform: translateY(0);
-  }
-
-  100% {
-    opacity: 0.9;
-    transform: translateY(5px);
-  }
-}
-
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 3px solid #2c2c2c;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  padding: 40px 20px;
+  background: rgba(245, 245, 220, 0.85); /* Beige, semi-transparent */
+  border: 5px solid #6B4F3A; /* Darker brown border */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 1;
-  animation: fadeInContainer 1.5s;
+  animation: fadeInContainer 1.5s ease-in-out;
 }
 
 @keyframes fadeInContainer {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
-
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
 .title {
   text-align: center;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  text-shadow: 3px 3px #000;
-  color: #8b0000;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  0% {
-    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000;
-  }
-
-  100% {
-    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000;
-  }
-}
-
-.initial {
   font-size: 3em;
-  float: left;
-  margin-right: 10px;
-  color: #b22222;
-  font-weight: bold;
-  animation: fadeIn 2s;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-.image-placeholder {
-  width: 100%;
-  height: 400px;
-  background: #e0e0e0;
-  border: 2px dashed #2c2c2c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5em;
-  color: #2c2c2c;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-.image-placeholder img {
-  width: 60%;
-  height: auto;
-  transition: transform 0.5s, filter 0.5s;
-  filter: brightness(0.8);
-}
-
-.image-placeholder img:hover {
-  transform: scale(1.05);
-  filter: brightness(1);
-}
-
-.description p {
-  text-align: justify;
-  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #5D4037; /* Dark Brown */
 }
 
 .glowing-text {
-  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000, 0 0 30px #ff0000, 0 0 35px #ff0000;
-  animation: glow 2s infinite alternate;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3), 0 0 15px rgba(255, 223, 186, 0.7); /* Softer glow */
+  animation: subtleGlow 3s infinite alternate;
 }
 
-.ancient-scroll {
-  position: relative;
-  background: url('/assets/scroll-background.png') no-repeat center center;
-  background-size: cover;
-  padding: 20px;
-  border: 2px solid #b8860b;
-  border-radius: 10px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px;
-  animation: scrollEffect 3s infinite alternate;
-}
-
-@keyframes scrollEffect {
-  0% {
-    transform: rotate(-1deg);
+@keyframes subtleGlow {
+  from {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3), 0 0 15px rgba(255, 223, 186, 0.7);
   }
-
-  100% {
-    transform: rotate(1deg);
+  to {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3), 0 0 25px rgba(255, 223, 186, 0.9);
   }
 }
 
-.character-sheet {
-  background: rgba(255, 255, 255, 0.8);
-  border: 2px solid #8b0000;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px;
-  animation: characterSheetEffect 3s infinite alternate;
-}
-
-@keyframes characterSheetEffect {
-  0% {
-    opacity: 0.9;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-.audio-control {
-  display: none;
-}
-
-/* Interactive Tooltip */
-.tooltip {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 200px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 5px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -100px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
-.tooltip:hover::after {
-  content: '🔍';
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5em;
-  color: #8b0000;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #8b0000;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.content p {
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.5em;
+  font-size: 1.1em;
 }
 
 .footer,
 .creative-commons {
   text-align: center;
-  margin-top: 20px;
-  font-size: 0.8em;
+  margin-top: 30px;
+  font-size: 0.9em;
+  color: #6B4F3A;
 }
 
 .separator {
-  margin: 50px 0;
+  margin: 60px auto;
   border: none;
-  height: 3px;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0), #8b0000, rgba(0, 0, 0, 0));
+  height: 2px;
+  width: 80%;
+  background: linear-gradient(to right, transparent, #6B4F3A, transparent);
 }
 
 .introduction {
   text-align: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  border: 2px solid #8b0000;
+  padding: 30px;
+  margin-top: 40px;
+  background: rgba(245, 245, 220, 0.9);
+  border-top: 2px solid #6B4F3A;
+  border-bottom: 2px solid #6B4F3A;
+}
+
+.introduction img {
+  max-width: 100%;
+  height: auto;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  animation: fadeInContainer 1.5s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  margin-bottom: 20px;
 }
 
 #logo {
-  border-radius: 40%;
+  border-radius: 50%;
+  width: 250px;
+  border: 5px solid #6B4F3A;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  margin-bottom: 10px;
 }
