@@ -33,10 +33,10 @@ jobs:
           APP=$(node -e "const a=require('./angular.json'); console.log(Object.keys(a.projects)[0])")
           echo "Detected Angular project: $APP"
 
-          # Build - projekt oldal: /cadentis/
+          # Build - projekt oldal: /ancient-chronicles/
           npx ng build --configuration production \
-            --base-href "/cadentis/" \
-            --deploy-url "/cadentis/"
+            --base-href "/ancient-chronicles/" \
+            --deploy-url "/ancient-chronicles/"
 
           # Kimeneti mappa autodetekció (Angular 17/18: dist/<app>/browser)
           if [ -d "dist/$APP/browser" ]; then
