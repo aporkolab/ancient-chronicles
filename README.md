@@ -6,7 +6,7 @@
 
 ## About This Project
 
-Welcome to the Ancient Chronicles, a digital archive dedicated to preserving and showcasing a collection of personal writings for the Hungarian role-playing game, M.A.G.U.S. (Master of Arcane Games and Universal Systems). The content on this site was originally written between 2001 and 2002 and was rediscovered on an old CD in May 2023.
+Welcome to the Ancient Chronicles, a digital archive dedicated to preserving and showcasing a collection of personal writings for the Hungarian role-playing game, M.A.G.U.S. (Miracle Adeptia Guns Urrus Sorrate). The content on this site was originally written between 2001 and 2002 and was rediscovered on an old CD in May 2023.
 
 This project was born out of a desire to bring these old creations—monsters, character classes, adventures, and poems—back to life. The website is designed to resemble a "disk magazine" (diskmag), a popular format in the early days of personal computing, and is built with modern web technologies.
 
