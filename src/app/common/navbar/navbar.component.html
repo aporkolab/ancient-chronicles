@@ -1,9 +1,6 @@
-<head>
-	<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-</head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<div class="container-fluid">
-		<a class="navbar-brand" (click)="navigateTo('/')" [ngClass]="{ 'active': currentUrl === '/' }">
+		<a class="navbar-brand" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
 			<img src="assets/logo.png" alt="Chronica Arcana" style="height: 40px; margin-right: 10px;">
 			Chronica Arcana
 		</a>
@@ -19,17 +16,17 @@
 						Hősök
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="charactersDropdown">
-						<li><a class="dropdown-item" (click)="navigateTo('/characters/sasszemu-ahm-shere')">Sasszemű Ahm Shere</a>
+						<li><a class="dropdown-item" routerLink="/characters/sasszemu-ahm-shere" routerLinkActive="active">Sasszemű Ahm Shere</a>
 						</li>
-						<li><a class="dropdown-item" (click)="navigateTo('/characters/gonis-tue')">Gonis Tue</a></li>
-						<li><a class="dropdown-item" (click)="navigateTo('/characters/emphasis-del-tomorrow')">Emphasis Del
+						<li><a class="dropdown-item" routerLink="/characters/gonis-tue" routerLinkActive="active">Gonis Tue</a></li>
+						<li><a class="dropdown-item" routerLink="/characters/emphasis-del-tomorrow" routerLinkActive="active">Emphasis Del
 								Tomorrow</a>
 						</li>
-						<li><a class="dropdown-item" (click)="navigateTo('/characters/ermor-von-geladen')">Ermor Von Geladen</a>
+						<li><a class="dropdown-item" routerLink="/characters/ermor-von-geladen" routerLinkActive="active">Ermor Von Geladen</a>
 						</li>
-						<li><a class="dropdown-item" (click)="navigateTo('/characters/dharr-menudo-syrus')">Dharr Menudo Syrus</a>
+						<li><a class="dropdown-item" routerLink="/characters/dharr-menudo-syrus" routerLinkActive="active">Dharr Menudo Syrus</a>
 						</li>
-						<li><a class="dropdown-item" (click)="navigateTo('/characters/ibeadra-veronika-teacea')">Ibeadra Veronika
+						<li><a class="dropdown-item" routerLink="/characters/ibeadra-veronika-teacea" routerLinkActive="active">Ibeadra Veronika
 								Teacea</a>
 						</li>
 					</ul>
@@ -40,13 +37,9 @@
 						Bestiárium
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="monstersDropdown">
-						<!-- Monster Links -->
-						<li><a class="dropdown-item" (click)="navigateTo('/monsters/arnyhalal')"
-								[ngClass]="{ 'active': currentUrl === '/monsters/arnyhalal' }">Árnyhalál</a></li>
-						<li><a class="dropdown-item" (click)="navigateTo('/monsters/bajverno')"
-								[ngClass]="{ 'active': currentUrl === '/monsters/bajverno' }">Bájvérnő</a></li>
-						<li><a class="dropdown-item" (click)="navigateTo('/monsters/lelekroppanto')"
-								[ngClass]="{ 'active': currentUrl === '/monsters/lelekroppanto' }">Lélekroppantó</a></li>
+												<li><a class="dropdown-item" routerLink="/monsters/arnyhalal" routerLinkActive="active">Árnyhalál</a></li>
+						<li><a class="dropdown-item" routerLink="/monsters/bajverno" routerLinkActive="active">Bájvérnő</a></li>
+						<li><a class="dropdown-item" routerLink="/monsters/lelekroppanto" routerLinkActive="active">Lélekroppantó</a></li>
 					</ul>
 				</li>
 
@@ -56,9 +49,7 @@
 						Küldetések
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="adventuresDropdown">
-						<!-- Adventure Links -->
-						<li><a class="dropdown-item" (click)="navigateTo('/adventures/melysivatag')"
-								[ngClass]="{ 'active': currentUrl === '/adventures/melysivatag' }">A Mélysivatag Labirintusa</a></li>
+												<li><a class="dropdown-item" routerLink="/adventures/melysivatag" routerLinkActive="active">A Mélysivatag Labirintusa</a></li>
 					</ul>
 				</li>
 
@@ -68,9 +59,7 @@
 						Novella
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="shortStoriesDropdown">
-						<!-- Short Stories Links -->
-						<li><a class="dropdown-item" (click)="navigateTo('/shortStories/mana-nyelo')"
-								[ngClass]="{ 'active': currentUrl === '/shortStories/mana-nyelo' }">A mana-nyelő</a></li>
+												<li><a class="dropdown-item" routerLink="/shortStories/mana-nyelo" routerLinkActive="active">A mana-nyelő</a></li>
 					</ul>
 				</li>
 
@@ -80,31 +69,28 @@
 						Kasztok
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="classesDropdown">
-						<!-- Classes Links -->
-						<li class="dropdown-submenu" [ngClass]="{ 'show': isWarriorsMenuOpen }"
+												<li class="dropdown-submenu" [ngClass]="{ 'show': isWarriorsMenuOpen }"
 							(mouseenter)="toggleWarriorsMenu(true)" (mouseleave)="toggleWarriorsMenu(false)">
-							<a class="dropdown-item dropdown-toggle" href="#">Harcosok</a>
+							<a class="dropdown-item dropdown-toggle" href="#" role="button" [attr.aria-expanded]="isWarriorsMenuOpen"
+								(click)="toggleSubmenu($event, 'warriors')">Harcosok</a>
 							<ul class="dropdown-menu" [ngClass]="{ 'show': isWarriorsMenuOpen }">
-								<li><a class="dropdown-item" (click)="navigateTo('/classes/warriors/hilvar')"
-										[ngClass]="{ 'active': currentUrl === '/classes/warriors/hilvar' }">Hilvar</a></li>
+								<li><a class="dropdown-item" routerLink="/classes/warriors/hilvar" routerLinkActive="active">Hilvar</a></li>
 							</ul>
 						</li>
 						<li class="dropdown-submenu" [ngClass]="{ 'show': isPriestsMenuOpen }"
 							(mouseenter)="togglePriestsMenu(true)" (mouseleave)="togglePriestsMenu(false)">
-							<a class="dropdown-item dropdown-toggle" href="#">Papok</a>
+							<a class="dropdown-item dropdown-toggle" href="#" role="button" [attr.aria-expanded]="isPriestsMenuOpen"
+								(click)="toggleSubmenu($event, 'priests')">Papok</a>
 							<ul class="dropdown-menu" [ngClass]="{ 'show': isPriestsMenuOpen }">
-								<li><a class="dropdown-item" (click)="navigateTo('/classes/priests/ellana-fopapno')"
-										[ngClass]="{ 'active': currentUrl === '/classes/priests/ellana-fopapno' }">Ellana Főpapnő</a></li>
-								<li><a class="dropdown-item" (click)="navigateTo('/classes/priests/ellana-pusztito')"
-										[ngClass]="{ 'active': currentUrl === '/classes/priests/ellana-pusztito' }">Ellana Pusztító</a></li>
+								<li><a class="dropdown-item" routerLink="/classes/priests/ellana-fopapno" routerLinkActive="active">Ellana Főpapnő</a></li>
+								<li><a class="dropdown-item" routerLink="/classes/priests/ellana-pusztito" routerLinkActive="active">Ellana Pusztító</a></li>
 							</ul>
 						</li>
 					</ul>
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" (click)="navigateTo('/contact')" [ngClass]="{ 'active': currentUrl === '/contact' }"
-						aria-current="page">Kapcsolatfelvétel</a>
+					<a class="nav-link" routerLink="/contact" routerLinkActive="active" ariaCurrentWhenActive="page">Kapcsolatfelvétel</a>
 				</li>
 			</ul>
 		</div>
