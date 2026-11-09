@@ -7,12 +7,12 @@
 
 		<h2>Leírás</h2>
 		<p>A Hilvarok valójában tökéletes orvgyilkosok, akiket a Kobrák társasága két lábon járó gyilkológépnek alkotott
-			meg. A Hilvar olyan ember, akinek ereiben démoni ichor (ikhór) kering, s ez az átlagembernél jóval magasabb
-			értékeket kölcsönöz neki.</p>
+			meg. A Hilvar olyan ember vagy félelf, akinek ereiben démoni ichor (ikhór) kering, s ez az átlagembernél jóval
+			magasabb értékeket kölcsönöz neki.</p>
 
 		<h2>Túl erős? Megoldás Detre Citríbtől</h2>
 		<p>Az eredeti Hilvarok túlságosan erősek volnának, ha más kalandozókhoz mérnénk őket, ráadásul előállításuk több
-			ezer aranyba kerül. Ezt a problémát Detre Citríb elf mágus oldotta meg. Dorani laboratóriumában egy kiöregedett
+			ezer aranyba kerül. Ezt a problémát Detre Citríb elf mágus oldotta meg. Erigowi laboratóriumában egy kiöregedett
 			Hilvart tanulmányozott, és arra jutott, hogy ha félig emberi vérrel töltik fel, gyengébb lesz ugyan, de még
 			mindig különleges tulajdonságokkal bír.</p>
 
@@ -20,7 +20,8 @@
 		<p>Pyarron szerinti 3615-ben Citríb kísérletei sikerrel jártak: a Kobrák tudta nélkül átalakított egy embert
 			fél-Hilvarrá. Ez az egyed már sokkal gyengébb volt: elvesztette méregellenállását, és minden többletértéke a
 			felére csökkent. Ennek ellenére – a tudomány és a mágia szövetségének köszönhetően – még mindig csodálatos
-			gyilkológép maradt.</p>
+			gyilkológép maradt. A játékos karakterek ilyen fél-Hilvarok – a továbbiakban őket is egyszerűen Hilvarnak
+			nevezzük –, és az alábbi értékek is rájuk vonatkoznak.</p>
 
 		<h2>Képességek</h2>
 		<table class="attributes">
@@ -37,7 +38,7 @@
 				</tr>
 				<tr>
 					<td>Szépség</td>
-					<td>3K6+kf</td>
+					<td>3K6 (az átalakítás hegei csökkenthetik, lásd: Hilvarrá válás)</td>
 				</tr>
 				<tr>
 					<td>Állóképesség</td>
@@ -92,7 +93,11 @@
 				</tr>
 				<tr>
 					<td>CÉ</td>
-					<td>Nincs</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>HM/szint</td>
+					<td>11</td>
 				</tr>
 			</tbody>
 		</table>
@@ -107,11 +112,11 @@
 			<tbody>
 				<tr>
 					<td>Ép alap</td>
-					<td>8 + az Állóképesség 9 feletti része</td>
+					<td>8 + az Egészség 9 feletti része</td>
 				</tr>
 				<tr>
 					<td>Fp alap</td>
-					<td>10 + az Akaraterő és az Egészség 10 feletti része, valamint szintenként K6+4 Fp</td>
+					<td>10 + az Akaraterő és az Állóképesség 10 feletti része, valamint szintenként K6+4 Fp</td>
 				</tr>
 			</tbody>
 		</table>
@@ -151,7 +156,9 @@
 		<h2>Különleges képességek</h2>
 		<div class="special-abilities">
 			<p>A Hilvarok hetente egyszer képesek vad tombolásban harcolni, ami KÉ-jüket 7-tel, TÉ-jüket 10-zel, VÉ-jüket
-				5-tel növeli. Halálukkor – a tűzvarázslókhoz hasonlóan – sebzést okozhatnak ellenfelüknek.</p>
+				5-tel növeli. Halálukkor – a tűzvarázslókhoz hasonlóan – sebzést okozhatnak ellenfelüknek; ennek erőssége (E)
+				az alábbiak szerint alakul. A Pszi csak akkor számít, ha a Hilvar később kitanulja (alapból nem ismeri), a búcsúima pedig
+				az a rövid fohász, amelyet halála pillanatában még elmondhat.</p>
 			<ul>
 				<li><strong>Alaperősség:</strong> 1 E</li>
 				<li><strong>Minden TSz:</strong> +2 E</li>
@@ -272,11 +279,11 @@
 					</tr>
 					<tr>
 						<td>Súly:</td>
-						<td>Általában 15 kg</td>
+						<td>Általában 1,5 kg</td>
 					</tr>
 					<tr>
 						<td>Ár:</td>
-						<td>Hilvarnak 4 a, másnak 11 a</td>
+						<td>Hilvarnak 4 arany, másnak 11 arany</td>
 					</tr>
 				</tbody>
 			</table>
@@ -310,11 +317,11 @@
 					</tr>
 					<tr>
 						<td>Súly:</td>
-						<td>Általában 15 kg</td>
+						<td>Általában 1,5 kg</td>
 					</tr>
 					<tr>
 						<td>Ár:</td>
-						<td>Hilvarnak 4 a, másnak 11 a</td>
+						<td>Hilvarnak 4 arany, másnak 11 arany</td>
 					</tr>
 				</tbody>
 			</table>
@@ -336,9 +343,10 @@
 					elvégezze az átalakítást. Ez gyakran valamilyen próbatételt vagy küldetést jelent, amelyet a karakternek
 					teljesítenie kell.</li>
 				<li><strong>Az átalakítás folyamata:</strong> Az átalakítás háromnapos, fájdalmas procedúra, amelynek során
-					a karakternek minden nap Akaraterő-, Asztrál- és Szépségpróbát kell tennie. Ha a próbákat elvéti, belehal
-					a műveletbe. Sikeres próba esetén Hilvarrá válik, de a sebek és hegek mértéke befolyásolja végső
-					tulajdonságait és külsejét.</li>
+					a karakternek minden nap Akaraterő-, Asztrál- és Szépségpróbát kell tennie. Ha egy napon mindhárom próbát
+					elvéti, belehal a műveletbe; minden egyes elvétett próba pedig maradandó sebeket és hegeket hagy rajta.
+					Ha túléli, Hilvarrá válik, de a sebek és hegek mértéke befolyásolja végső tulajdonságait és
+					külsejét.</li>
 				<li><strong>Próba és szabadúszás:</strong> Az átalakítás után a karakternek még egy küldetést kell
 					teljesítenie: ez Detre Citríb próbája. Ha sikerrel jár, szabadúszó Hilvarrá válhat.</li>
 			</ol>
