@@ -1,75 +1,101 @@
 <div class="jukebox" [class.minimized]="isMinimized">
 	<div class="header">
-		<button (click)="toggleMinimize()" [class.active]="isMinimized" data-tooltip="Kicsinyítés/Nagyítás"
-			id="minimizeButton">
+		<button type="button" (click)="toggleMinimize()" [class.active]="isMinimized" data-tooltip="Kicsinyítés/Nagyítás"
+			[attr.aria-label]="isMinimized ? 'Zenegép kinyitása' : 'Zenegép összecsukása'" id="minimizeButton">
 			{{ isMinimized ? '⤢' : '⤡' }}
 		</button>
 	</div>
-	<div *ngIf="!isMinimized" class="content">
-		<div class="track-list">
-			<h2>Dalok listája</h2>
-			<ul>
-				<li *ngFor="let track of tracks" (click)="play(track.filename)"
-					[class.active]="currentTrack?.filename === track.filename">
-					{{ track.title }} - {{ track.duration }}
-				</li>
-			</ul>
+	@if (!isMinimized) {
+		<div class="content">
+			<div class="track-list">
+				<h2>Dalok listája</h2>
+				<ul>
+					@for (track of tracks; track track.filename) {
+						<li (click)="play(track.filename)" (keydown.enter)="play(track.filename)" tabindex="0"
+							[class.active]="currentTrack?.filename === track.filename">
+							{{ track.title }} – {{ track.duration }}
+						</li>
+					}
+				</ul>
+			</div>
+			<div class="controls">
+				<button type="button" (click)="stop()" data-tooltip="Leállítás" aria-label="Leállítás">⏹</button>
+				<button type="button" (click)="togglePlayPause()" [attr.data-tooltip]="getTooltipText()"
+					[attr.aria-label]="getTooltipText()">
+					{{ isPlaying() ? '⏸' : '⏵' }}
+				</button>
+				<button type="button" (click)="playPrevious()" data-tooltip="Előző" aria-label="Előző">⏮</button>
+				<button type="button" (click)="playNext()" data-tooltip="Következő" aria-label="Következő">⏭</button>
+				<button type="button" (click)="toggleLoop()" [class.active]="isLooping" data-tooltip="Ismétlés"
+					aria-label="Ismétlés" [attr.aria-pressed]="isLooping">🔁</button>
+				<button type="button" (click)="toggleShuffle()" [class.active]="isShuffling"
+					data-tooltip="Véletlenszerű lejátszás" aria-label="Véletlenszerű lejátszás"
+					[attr.aria-pressed]="isShuffling">🔀</button>
+				<button type="button" (click)="toggleVisualizer()" [class.active]="showVisualizer" data-tooltip="Vizualizáló"
+					aria-label="Vizualizáló" [attr.aria-pressed]="showVisualizer">🎵</button>
+				<button type="button" (click)="toggleEqualizer()" [class.active]="showEqualizer"
+					data-tooltip="Hangszínszabályzó" aria-label="Hangszínszabályzó" [attr.aria-pressed]="showEqualizer">🎚</button>
+				<label for="volume" style="margin-left: 20px;">🔊</label>
+				<input id="volume" type="range" min="0" max="100" [value]="volumePercent" (input)="setVolume($event)"
+					aria-label="Hangerő">
+			</div>
+			@if (currentTrack) {
+				<div [ngClass]="currentClass">
+					<h3>Most szól:</h3>
+					<p><strong>Cím:</strong> {{ currentTrack.title }}</p>
+					@if (currentTrack.lyricist) {
+						<p><strong>Dalszöveg:</strong> {{ currentTrack.lyricist }}</p>
+					} @else {
+						<p><strong>Műfaj:</strong> instrumentális</p>
+					}
+					<div class="progress-bar" (click)="seek($event)">
+						<div class="progress" [style.width.%]="getProgress()"></div>
+					</div>
+				</div>
+			} @else {
+				<div>
+					<h3>Jelenleg nem szól dal.</h3>
+				</div>
+			}
+			@if (showVisualizer) {
+				<div class="visualizer">
+					<canvas #visualizerCanvas></canvas>
+				</div>
+			}
+			@if (showEqualizer) {
+				<div class="equalizer-controls">
+					<label for="bass">Mélykiemelés</label>
+					<input id="bass" type="range" min="0" max="100" value="50" (input)="setBassBoost($event)"
+						title="Mélykiemelés">
+					<label for="treble">Magaskiemelés</label>
+					<input id="treble" type="range" min="0" max="100" value="50" (input)="setTrebleBoost($event)"
+						title="Magaskiemelés">
+				</div>
+			}
 		</div>
-		<div class="controls">
-			<button (click)="stop()" data-tooltip="Leállítás">⏹</button>
-			<button (click)="togglePlayPause()" [attr.data-tooltip]="getTooltipText()">
-				{{ isPlaying() ? '⏸' : '⏵' }}
-			</button>
-			<button (click)="playPrevious()" data-tooltip="Előző">⏮</button>
-			<button (click)="playNext()" data-tooltip="Következő">⏭</button>
-			<button (click)="toggleLoop()" [class.active]="isLooping" data-tooltip="Ismétlés">🔁</button>
-			<button (click)="toggleShuffle()" [class.active]="isShuffling" data-tooltip="Véletlenszerű lejátszás">🔀</button>
-			<button (click)="toggleVisualizer()" [class.active]="showVisualizer" data-tooltip="Vizualizáló">🎵</button>
-			<button (click)="toggleEqualizer()" [class.active]="showEqualizer" data-tooltip="Hangszínszabályzó">🎚</button>
-			<label for="volume" style="margin-left: 20px;">🔊</label>
-			<input id="volume" type="range" min="0" max="100" (input)="setVolume($event)">
-		</div>
-		<div [ngClass]="currentClass" *ngIf="currentTrack">
-			<h3>Jelenleg lejátszva:</h3>
-			<p><strong>Cím:</strong> {{ currentTrack.title }}</p>
-			<p><strong>Szerző:</strong> {{ currentTrack.author }}</p>
-			<p><strong>Dalszövegíró:</strong> {{ currentTrack.lyricist }}</p>
+	} @else {
+		<div class="minimized-content">
+			<div class="minimized-visualizer">
+				<canvas #visualizerCanvas></canvas>
+			</div>
+			<div class="track-info">
+				<p><strong>{{ currentTrack ? 'Cím: ' + currentTrack.title : 'Jelenleg nem szól dal.' }}</strong></p>
+			</div>
 			<div class="progress-bar" (click)="seek($event)">
 				<div class="progress" [style.width.%]="getProgress()"></div>
 			</div>
+			<div class="controls">
+				<button type="button" (click)="togglePlayPause()" [attr.data-tooltip]="getTooltipText()"
+					[attr.aria-label]="getTooltipText()">
+					{{ isPlaying() ? '⏸' : '⏵' }}
+				</button>
+				<button type="button" (click)="stop()" data-tooltip="Leállítás" aria-label="Leállítás">⏹</button>
+				<button type="button" (click)="playPrevious()" data-tooltip="Előző" aria-label="Előző">⏮</button>
+				<button type="button" (click)="playNext()" data-tooltip="Következő" aria-label="Következő">⏭</button>
+				<label for="volume" id="volumeID" style="margin-left: 20px;">🔊</label>
+				<input id="volume" type="range" min="0" max="100" [value]="volumePercent" (input)="setVolume($event)"
+					aria-label="Hangerő">
+			</div>
 		</div>
-		<div *ngIf="!currentTrack">
-			<h3>Jelenleg nincsen lejátszott dal.</h3>
-		</div>
-		<div class="visualizer" *ngIf="showVisualizer">
-			<canvas #visualizerCanvas></canvas>
-		</div>
-		<div class="equalizer-controls" *ngIf="showEqualizer">
-			<label>Basszus kiemelés</label>
-			<input type="range" min="0" max="100" (input)="setBassBoost($event)" title="Basszus kiemelés">
-			<label>Magas kiemelés</label>
-			<input type="range" min="0" max="100" (input)="setTrebleBoost($event)" title="Magas kiemelés">
-		</div>
-	</div>
-	<div *ngIf="isMinimized" class="minimized-content">
-		<div class="minimized-visualizer">
-			<canvas #visualizerCanvas></canvas>
-		</div>
-		<div class="track-info">
-			<p><strong>{{ currentTrack ? 'Cím:' : 'Jelenleg nincsen lejátszott dal.' }} {{ currentTrack?.title }}</strong></p>
-		</div>
-		<div class="progress-bar" (click)="seek($event)">
-			<div class="progress" [style.width.%]="getProgress()"></div>
-		</div>
-		<div class="controls">
-			<button (click)="togglePlayPause()" [attr.data-tooltip]="getTooltipText()">
-				{{ isPlaying() ? '⏸' : '⏵' }}
-			</button>
-			<button (click)="stop()" data-tooltip="Leállítás">⏹</button>
-			<button (click)="playPrevious()" data-tooltip="Előző">⏮</button>
-			<button (click)="playNext()" data-tooltip="Következő">⏭</button>
-			<label for="volume" id="volumeID" style="margin-left: 20px;">🔊</label>
-			<input id="volume" type="range" min="0" max="100" (input)="setVolume($event)">
-		</div>
-	</div>
+	}
 </div>

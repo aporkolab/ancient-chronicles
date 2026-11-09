@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
 
 #volumeID {
   align-content: center;
@@ -14,7 +13,7 @@
 }
 
 .jukebox {
-  background: url('/assets/rpg-background.png') no-repeat center center;
+  background: url('../../../../public/assets/rpg-background.png') no-repeat center center;
   background-size: cover;
   padding: 20px;
   border: 2px solid #ccc;
