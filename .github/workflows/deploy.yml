@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -14,8 +17,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Node.js (LTS)
         uses: actions/setup-node@v4
@@ -24,37 +25,24 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm i
+        run: npm ci
+
+      - name: Unit tests
+        run: npx ng test --watch=false --browsers=ChromeHeadless --no-progress
 
       - name: Build Angular app
-        shell: bash
-        run: |
-          # App név kiolvasása az angular.json-ból
-          APP=$(node -e "const a=require('./angular.json'); console.log(Object.keys(a.projects)[0])")
-          echo "Detected Angular project: $APP"
+        # A projekt a /ancient-chronicles/ alútvonalon fut, ezért minden saját hivatkozás
+        # (képek, háttérképek, zenék) a base href-hez képest relatív.
+        run: npx ng build --configuration production --base-href "/ancient-chronicles/"
 
-          # Build - projekt oldal: /ancient-chronicles/
-          npx ng build --configuration production \
-            --base-href "/ancient-chronicles/" \
-            --deploy-url "/ancient-chronicles/"
-
-          # Kimeneti mappa autodetekció (Angular 17/18: dist/<app>/browser)
-          if [ -d "dist/$APP/browser" ]; then
-            OUT_DIR="dist/$APP/browser"
-          else
-            OUT_DIR="dist/$APP"
-          fi
-          echo "OUT_DIR=$OUT_DIR" >> $GITHUB_ENV
-          ls -la "$OUT_DIR"
-          test -f "$OUT_DIR/index.html" || (echo "index.html not found in $OUT_DIR" && exit 1)
-
-      - name: Add SPA 404 fallback
-        run: cp "$OUT_DIR/index.html" "$OUT_DIR/404.html"
+      - name: Static copies for every route (HTTP 200 for deep links) + 404 fallback
+        run: node scripts/spa-routes.mjs dist/ancient-chronicles/browser
 
       - name: Deploy to GitHub Pages
+        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ${{ env.OUT_DIR }}
+          publish_dir: dist/ancient-chronicles/browser
           force_orphan: true
